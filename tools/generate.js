@@ -205,7 +205,7 @@ function siteSchema(p) {
    footer placeholder with the real links gives those crawlers the link graph;
    layout.js replaces the whole element, so a visitor never sees both. */
 const CRAWL_NAV = '<nav class="pre-nav" aria-label="Site">' +
-  [['/', 'Home'], ['/personal-training/', 'Personal Training'], ['/programs/', 'Programs & pricing'],
+  [['/', 'Home'], ['/personal-training/', 'Personal Training'], ['/programs/', 'Programs &amp; pricing'],
    ['/elite/', 'Everest Elite'], ['/organisations/', 'Organisations'], ['/empower/', 'EMPOWER'],
    ['/about/', 'About'], ['/impact/', 'Impact'], ['/team/', 'Team'], ['/blog/', 'Blog'],
    ['/contact/', 'Contact'], ['/legal/', 'Legal']]
