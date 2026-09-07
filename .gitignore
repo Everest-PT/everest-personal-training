@@ -8,6 +8,7 @@ node_modules/
 # Generated at build time by tools/generate.js
 sitemap.xml
 llms.txt
+robots.txt
 
 # Generated blog output (built by tools/build_blog.py at deploy).
 # Source markdown lives in content/blog/ and IS committed; everything the

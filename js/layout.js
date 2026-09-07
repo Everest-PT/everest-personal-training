@@ -169,6 +169,10 @@
 
   /* structured data: LocalBusiness + WebSite (every page) + BreadcrumbList */
   function injectSchema() {
+    /* tools/generate.js writes this graph into the static HTML at build time,
+       because the crawlers that matter most to answer engines do not run JS.
+       This runtime copy is the fallback for an unbuilt local checkout. */
+    if (document.querySelector('script[data-everest-schema]')) return;
     var origin = location.origin;
     var graph = [
       {

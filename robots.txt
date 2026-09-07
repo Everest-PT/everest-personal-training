@@ -1,6 +1,0 @@
-# STAGING: blocking all crawlers while on the *.vercel.app preview URL.
-# When the live domain goes live: change Disallow to "Allow: /" and update the Sitemap URL.
-User-agent: *
-Disallow: /
-
-Sitemap: https://everest-personal-training.vercel.app/sitemap.xml

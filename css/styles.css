@@ -280,6 +280,13 @@ h1, h2, h3 { font-weight: 500; margin: 0; line-height: 1.12; }
 
 /* footer */
 .site-footer { background: var(--black-deep); color: var(--grey-muted); font-size: 14px; }
+/* Crawlable link list written into the footer placeholder by tools/generate.js.
+   layout.js replaces the whole element on load, so this is only ever seen by a
+   crawler that does not run JS - and, for a moment, by a visitor on a slow
+   connection. Styled to match the footer so that moment is not jarring. */
+.pre-nav { display: flex; flex-wrap: wrap; gap: 8px 20px; max-width: 1092px; margin: 0 auto; padding: 48px 24px; background: var(--black-deep); font-size: 14px; }
+.pre-nav a { color: var(--ink-on-dark); text-decoration: none; }
+#site-footer:has(.pre-nav) { background: var(--black-deep); }
 .site-footer a { color: var(--ink-on-dark); }
 .site-footer a:hover { color: #fff; }
 .footer-top { display: grid; grid-template-columns: 1.3fr 2fr; gap: 40px;
