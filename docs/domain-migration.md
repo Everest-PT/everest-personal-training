@@ -75,12 +75,12 @@ the DNS moves.
 
 # Taking control of the domain
 
-Added 4 September 2026, after Shrike Marketing (Byron Locke) gave notice that
+Added 7 September 2026, after Shrike Marketing (Byron Locke) gave notice that
 he is closing all hosting accounts.
 
 ## What the registry actually says
 
-Checked against Verisign RDAP on 4 September 2026 — not from the host's email.
+Checked against Verisign RDAP on 7 September 2026 — not from the host's email.
 
 | Field | Value |
 |---|---|
@@ -94,13 +94,13 @@ The host's email says the domain renews on 2 September 2026. That is wrong.
 The registry says 6 October 2026, which matches the attached PDF. Work to the
 6 October date.
 
-The site and mail were still live on 4 September 2026 (HTTP 200 from Apache at
+The site and mail were still live on 7 September 2026 (HTTP 200 from Apache at
 41.204.202.43, MX still pointed at Xneelo) even though the notice set a
 shutdown date of 15 July 2026. That is goodwill, not a guarantee.
 
 ## Current DNS zone
 
-Captured 4 September 2026 via 8.8.8.8. Every record below must exist at the
+Captured 7 September 2026 via 8.8.8.8. Every record below must exist at the
 new DNS provider *before* the nameservers are changed, or the site and email
 go dark at the moment of the switch.
 
