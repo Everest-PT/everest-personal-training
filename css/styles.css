@@ -2539,3 +2539,163 @@ html, body { overflow-x: clip; }
    to stack vertically. Breakpoint matches the <source> media in the markup;
    change one and change the other. */
 @media (max-width: 820px) { .org-scope .split-media { aspect-ratio: 1/1; } }
+
+/* ===== Homepage mission/vision, short form =====
+   One line of vision and one sentence of mission. The two-card version still
+   lives on /about/, which is why the .mv-card rules above stay. */
+.mv-short { padding: clamp(56px, 9vh, 88px) 0; }
+.mv-short .wrap { max-width: 920px; }
+.mv-short .eyebrow { margin-bottom: 18px; }
+.mv-short-line { font-family: var(--display); font-weight: 600; font-size: clamp(24px, 3.2vw, 38px);
+  line-height: 1.22; letter-spacing: -.01em; color: #fff; margin: 0; }
+.mv-short-sub { font-family: var(--font); font-size: 16px; line-height: 1.7; color: var(--ink-on-dark);
+  margin: 18px 0 0; max-width: 62ch; }
+.mv-short-sub a { color: var(--teal-accent); border-bottom: 1px solid rgba(20,164,184,.45); white-space: nowrap; }
+.mv-short-sub a:hover { color: #fff; border-bottom-color: #fff; }
+
+/* ===== What's happening at Everest (homepage community wall) =====
+   Cards are rendered from data/whats-happening.json by js/whats-happening.js.
+   The grid's count class picks the layout, so adding an item never needs a
+   CSS change: n1 is one wide card, n2 puts the featured card beside its
+   partner, n3 (three or more) lets the featured card span two rows with the
+   rest stacked beside it and flowing below.
+   Text colours were checked against their backgrounds at 4.5:1 or better,
+   which is why the status tag sets black on teal rather than the darkest teal
+   the buttons use. */
+.wh { background: #fff; padding: clamp(72px, 11vh, 120px) 0; }
+.wh-head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap;
+  gap: 16px 48px; margin-bottom: clamp(28px, 4vh, 44px); }
+.wh-head h2 { font-size: clamp(28px, 3.6vw, 46px); font-weight: 700; line-height: 1.05;
+  color: var(--black); margin: 0; max-width: 18ch; }
+.wh-head p { font-family: var(--font); font-size: 16px; line-height: 1.6; color: var(--slate);
+  max-width: 40ch; margin: 0; }
+
+.wh-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 861px) {
+  .wh-grid--n2, .wh-grid--n3 { grid-template-columns: 1.35fr 1fr; }
+  .wh-grid--n3 .wh-card.is-featured { grid-row: span 2; }
+}
+
+.wh-card { position: relative; display: flex; flex-direction: column; overflow: hidden;
+  border-radius: 22px; background: var(--black); color: #fff;
+  border: 1px solid rgba(255,255,255,.08);
+  transition: transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .35s ease, border-color .35s ease; }
+.wh-card[hidden] { display: none; }
+/* the brand edge: teal for Everest, the EMPOWER wing for EMPOWER */
+.wh-card::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 4px; z-index: 2;
+  background: var(--teal-accent); }
+.wh-theme-empower::before { background: var(--emp-wing); }
+@media (hover: hover) {
+  .wh-card:hover { transform: translateY(-4px); border-color: rgba(20,164,184,.45);
+    box-shadow: 0 24px 48px -20px rgba(6,96,108,.5); }
+}
+
+.wh-body { position: relative; z-index: 1; display: flex; flex-direction: column; flex: 1;
+  padding: clamp(24px, 3vw, 38px); }
+
+/* featured image: the badge sits on a soft teal glow */
+.wh-visual { position: relative; display: grid; place-items: center;
+  padding: clamp(28px, 3vw, 38px) clamp(24px, 3vw, 38px) 0; }
+.wh-visual::before { content: ''; position: absolute; top: 50%; left: 50%; width: 78%; aspect-ratio: 1;
+  transform: translate(-50%, -42%); border-radius: 50%;
+  background: radial-gradient(circle, rgba(20,164,184,.34), rgba(20,164,184,0) 68%); }
+.wh-visual img { position: relative; display: block; width: clamp(140px, 40vw, 200px); height: auto;
+  filter: drop-shadow(0 18px 28px rgba(0,0,0,.45)); }
+@media (min-width: 1100px) {
+  .wh-card.is-featured:has(.wh-visual) { display: grid; grid-template-columns: 1fr minmax(200px, 36%); }
+  .wh-card.is-featured .wh-visual { order: 2; align-self: center; padding: 38px 38px 38px 0; }
+  .wh-card.is-featured .wh-visual img { width: 100%; max-width: 240px; }
+}
+
+/* performance: a stepped ascent drawn in when the wall comes into view */
+.wh-ascent { display: block; width: min(220px, 60%); height: auto; overflow: visible;
+  margin: clamp(26px, 3vw, 36px) 0 0 clamp(24px, 3vw, 38px); }
+.wh-ascent-line { fill: none; stroke: var(--teal-accent); stroke-width: 2.5; stroke-linejoin: round;
+  stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.6s cubic-bezier(.3,.7,.2,1) .3s; }
+.wh-wall.reveal:not(.is-visible) .wh-ascent-line { stroke-dashoffset: 1; }
+.wh-ascent-summit { fill: var(--teal-accent); }
+
+.wh-flag { align-self: flex-start; font-family: var(--font); font-size: 12px; font-weight: 600;
+  letter-spacing: 1.6px; text-transform: uppercase; color: var(--teal-accent);
+  border: 1px solid rgba(20,164,184,.55); padding: 5px 12px; border-radius: var(--radius-pill); margin: 0 0 16px; }
+.wh-theme-empower .wh-flag { color: var(--emp-hot); border-color: rgba(255,61,130,.55); }
+.wh-cat { font-family: var(--font); font-size: 12px; font-weight: 600; letter-spacing: 1.8px;
+  text-transform: uppercase; color: var(--teal-on-dark); margin: 0 0 10px; }
+.wh-title { font-family: var(--display); font-weight: 700; font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.08; letter-spacing: -.005em; text-transform: uppercase; color: #fff; margin: 0 0 16px; }
+.wh-card.is-featured .wh-title { font-size: clamp(28px, 3vw, 42px); }
+
+.wh-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; padding: 0; }
+.wh-tags li { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font);
+  font-size: 12px; font-weight: 600; letter-spacing: .6px; text-transform: uppercase;
+  padding: 6px 12px; border-radius: var(--radius-pill); }
+.wh-status { background: var(--teal-accent); color: var(--black); }
+.wh-status.is-live::before { content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: currentColor; animation: whPulse 1.8s ease-in-out infinite; }
+.wh-status.is-done { background: rgba(255,255,255,.14); color: #fff; }
+.wh-date { color: #fff; border: 1px solid rgba(255,255,255,.28); }
+@keyframes whPulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+
+.wh-desc { font-family: var(--font); font-size: 15px; line-height: 1.65; color: var(--ink-on-dark);
+  margin: 0 0 22px; max-width: 58ch; }
+.wh-meta { display: flex; flex-wrap: wrap; gap: 14px 28px; margin: 0 0 26px; padding: 18px 0 0;
+  border-top: 1px solid rgba(255,255,255,.12); }
+.wh-meta dt { font-family: var(--font); font-size: 12px; font-weight: 600; letter-spacing: 1.4px;
+  text-transform: uppercase; color: var(--grey-muted); margin: 0 0 4px; }
+.wh-meta dd { font-family: var(--font); font-size: 14px; line-height: 1.4; color: #fff; margin: 0; }
+
+.wh-cta { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font); font-size: 15px; font-weight: 600; text-decoration: none;
+  color: var(--black); background: var(--teal-accent); padding: 13px 22px; border-radius: var(--radius-pill);
+  transition: background-color .2s ease, color .2s ease; }
+.wh-cta i { transition: transform .2s ease; }
+.wh-cta:hover { background: #fff; color: var(--black); }
+.wh-cta:hover i { transform: translateX(3px); }
+.wh-cta:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+/* upcoming: for initiatives still in development. Light, dashed and outlined
+   so it reads as future work rather than something already running. */
+.wh-theme-upcoming { background: var(--cloud); color: var(--black); border: 1.5px dashed var(--mist-line); }
+.wh-theme-upcoming::before { display: none; }
+.wh-theme-upcoming .wh-flag, .wh-theme-upcoming .wh-cat { color: var(--teal-deep); }
+.wh-theme-upcoming .wh-flag { border-color: rgba(6,96,108,.5); }
+.wh-theme-upcoming .wh-title { color: var(--black); }
+.wh-theme-upcoming .wh-status { background: transparent; color: var(--teal-deep); border: 1px solid var(--teal-deep); }
+.wh-theme-upcoming .wh-date { color: var(--slate); border-color: rgba(17,17,17,.22); }
+.wh-theme-upcoming .wh-desc { color: var(--slate); }
+.wh-theme-upcoming .wh-meta { border-top-color: rgba(17,17,17,.1); }
+.wh-theme-upcoming .wh-meta dt { color: var(--slate); }
+.wh-theme-upcoming .wh-meta dd { color: var(--black); }
+.wh-theme-upcoming .wh-cta { background: transparent; color: var(--teal-deep); border: 1px solid var(--teal-deep); }
+.wh-theme-upcoming .wh-cta:hover { background: var(--teal-deep); color: #fff; }
+.wh-theme-upcoming .wh-cta:focus-visible { outline-color: var(--teal-deep); }
+
+@media (max-width: 860px) {
+  .wh-head { align-items: flex-start; }
+  .wh-meta { gap: 12px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wh-card, .wh-cta, .wh-cta i, .wh-ascent-line { transition: none; }
+  .wh-card:hover { transform: none; }
+  .wh-cta:hover i { transform: none; }
+  .wh-status.is-live::before { animation: none; }
+}
+
+/* Phones. The wall is two tall cards here, so trim what doesn't carry meaning
+   (a smaller badge and ascent, tighter padding) and let the CTA take the full
+   card width. The CTA labels are long enough to wrap at 375px; a full-width
+   button that wraps reads as intentional, where a two-line pill does not. */
+@media (max-width: 560px) {
+  .wh-body { padding: 22px 20px 24px; }
+  .wh-visual { padding: 22px 20px 0; place-items: start; }
+  .wh-visual::before { left: 76px; width: 170px; }
+  .wh-visual img { width: 112px; }
+  .wh-ascent { width: 150px; margin: 22px 0 0 20px; }
+  .wh-title, .wh-card.is-featured .wh-title { font-size: 26px; margin-bottom: 14px; }
+  .wh-tags { margin-bottom: 16px; }
+  .wh-desc { margin-bottom: 18px; }
+  .wh-meta { margin-bottom: 20px; padding-top: 14px; }
+  .wh-cta { align-self: stretch; justify-content: center; text-align: center; line-height: 1.3;
+    border-radius: 16px; }
+}

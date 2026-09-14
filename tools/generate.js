@@ -218,6 +218,23 @@ const CRAWL_NAV = '<nav class="pre-nav" aria-label="Site">' +
    it only runs on Vercel unless explicitly asked for. */
 const REWRITE = process.env.SEO_REWRITE === '1' || !!process.env.VERCEL;
 
+/* "What's happening at Everest" wall, rendered by the same module the browser
+   uses so the card markup is defined once. A malformed data file fails the
+   build on purpose: Vercel then keeps the last good deployment live instead of
+   shipping a homepage with an empty section. */
+const wh = require('../js/whats-happening.js');
+let WH_HTML = '';
+let WH_COUNT = 0;
+{
+  const file = path.join(ROOT, 'data', 'whats-happening.json');
+  let data;
+  try { data = JSON.parse(fs.readFileSync(file, 'utf8')); }
+  catch (e) { throw new Error('data/whats-happening.json could not be read: ' + e.message); }
+  const out = wh.whatsHappeningWall(data, wh.nzToday());
+  WH_HTML = out.html;
+  WH_COUNT = out.count;
+}
+
 let rewritten = 0;
 for (const p of (REWRITE ? all : [])) {
   let html = fs.readFileSync(p.file, 'utf8');
@@ -260,6 +277,13 @@ for (const p of (REWRITE ? all : [])) {
     html = html.replace(/<\/head>/i, '  ' + siteSchema(p.path) + '\n</head>');
   }
 
+  // what's happening wall (homepage only). Function replacement so a "$" in
+  // card copy is never read as a backreference.
+  if (p.path === '/') {
+    html = html.replace(/<!-- wh:start -->[\s\S]*?<!-- wh:end -->/,
+      () => '<!-- wh:start -->' + WH_HTML + '<!-- wh:end -->');
+  }
+
   // crawlable footer links
   html = html.replace(/<div id="site-footer">\s*<\/div>/i, '<div id="site-footer">' + CRAWL_NAV + '</div>');
 
@@ -268,5 +292,5 @@ for (const p of (REWRITE ? all : [])) {
 
 console.log(
   `SEO pass: ${pages.length} urls in sitemap (${posts.length} blog posts), ` +
-  `${rewritten} pages rewritten (rewrite=${REWRITE}), indexable=${INDEXABLE}, site=${SITE_URL}`
+  `${rewritten} pages rewritten (rewrite=${REWRITE}), indexable=${INDEXABLE}, wall=${WH_COUNT} cards, site=${SITE_URL}`
 );

@@ -1,0 +1,61 @@
+{
+  "note": "Homepage 'What's happening at Everest' wall. One object per initiative; add a new one by copying an existing object. Put the lead story first and give it \"featured\": true (only one item should be featured). Dates are YYYY-MM-DD in New Zealand time, and they drive the status tag automatically: \"status\" shows before startDate, \"liveStatus\" from startDate, \"doneStatus\" after endDate, and the card disappears after hideAfter. Leave a date as null if it does not apply. \"theme\" is one of: empower, performance, upcoming (use upcoming for anything still in development). \"ctaHref\" must be a page that already exists on the site. If you replace an image, give the new file a new name, because /assets/ is cached permanently. \"_todo\" is never shown on the site. IMPORTANT: this file is publicly readable at /data/whats-happening.json, so only add initiatives that are confirmed and partners who have agreed to be named. Never park drafts here.",
+  "items": [
+    {
+      "id": "empower-youth-pilot",
+      "title": "EMPOWER Youth Pilot",
+      "category": "Youth Development",
+      "status": "Pilot Program",
+      "liveStatus": "Pilot underway",
+      "doneStatus": "Pilot complete",
+      "dateLabel": "Term 4, 2026",
+      "startDate": "2026-10-21",
+      "endDate": "2026-11-25",
+      "hideAfter": null,
+      "description": "Everest is launching the EMPOWER pilot, a youth movement and confidence program designed to help young people build strength, coordination, self-belief and positive habits through structured physical activity.",
+      "audience": "Children and families",
+      "partner": "Busy Bumbles",
+      "location": "Lemonwood Grove School / Rolleston",
+      "ctaLabel": "View EMPOWER Sign-Up",
+      "ctaHref": "/empower/#register",
+      "imageSrc": "/assets/img/empower-busy-bumbles-card-v1.webp",
+      "imageAlt": "EMPOWER and Busy Bumbles partnership badge",
+      "imageWidth": 480,
+      "imageHeight": 480,
+      "theme": "empower",
+      "featured": true,
+      "featuredLabel": "Featured pilot",
+      "_todo": [
+        "TEMPORARY IMAGE: the partnership badge stands in until Rebecca (Busy Bumbles) supplies the EMPOWER sign-up poster. Jared to provide the poster file, then change imageSrc/imageAlt/imageWidth/imageHeight.",
+        "SIGN-UP URL NEEDED: ctaHref points at the EMPOWER register-interest form, which is not yet connected to anything. Jared to provide the real sign-up link. Do not guess it.",
+        "PERMISSION: confirm Lemonwood Grove School is happy to be named publicly before launch."
+      ]
+    },
+    {
+      "id": "built-for-the-climb",
+      "title": "Built For The Climb",
+      "category": "Firefighter Performance",
+      "status": "Starts 21.09.2026",
+      "liveStatus": "Underway",
+      "doneStatus": "Completed",
+      "dateLabel": "21 September 2026",
+      "startDate": "2026-09-21",
+      "endDate": null,
+      "hideAfter": null,
+      "description": "Local firefighters are using Everest training to prepare for upcoming Combat Challenge events and the annual Sky Tower Challenge. Built For The Climb supports the strength, conditioning and resilience needed for demanding emergency-service performance.",
+      "audience": "Firefighters / emergency services",
+      "partner": "Local firefighters",
+      "location": null,
+      "ctaLabel": "Learn About Performance Training",
+      "ctaHref": "/organisations/",
+      "imageSrc": null,
+      "imageAlt": null,
+      "theme": "performance",
+      "featured": false,
+      "_todo": [
+        "Confirm the event names as they should appear publicly (Combat Challenge, Sky Tower Challenge).",
+        "Add an endDate once the preparation block has a finish date, so the status moves to Completed on its own."
+      ]
+    }
+  ]
+}

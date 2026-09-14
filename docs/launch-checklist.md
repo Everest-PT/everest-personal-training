@@ -56,6 +56,24 @@ SEO_INDEX=1 SITE_URL=https://www.everest-pt.com node tools/generate.js
 - **HIIT For Hope figures** from the MBIE post-event report.
 - **Team details and photos** for `/team/`.
 
+## What's happening wall (homepage)
+
+Cards live in `data/whats-happening.json`; the `note` at the top of that file
+explains every field. Outstanding before launch:
+
+- **EMPOWER sign-up poster** from Rebecca at Busy Bumbles. The partnership badge
+  is standing in (`imageSrc`). Swap it when the poster arrives, under a new
+  filename.
+- **EMPOWER sign-up URL.** The card's button points at `/empower/#register`,
+  whose form is not connected to anything yet. Replace `ctaHref` with the real
+  link. Do not guess it.
+- **Permission from Lemonwood Grove School** to be named on the homepage.
+- **Built For The Climb event names** as they should appear publicly, and an
+  `endDate` once the preparation block has one.
+- **The data file is public** at `/data/whats-happening.json`. Only confirmed
+  initiatives, and partners who have agreed to be named, go in it. Unconfirmed
+  programs stay out until they are agreed.
+
 ## Getting Google ratings
 
 Star ratings next to a business in Google search come from a **Google Business

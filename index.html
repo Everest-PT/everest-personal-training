@@ -92,26 +92,14 @@
       </div>
     </section>
 
-    <!-- Mission and vision. Stated in full on /about/; this is the short form,
-         placed straight after the statement so the ambition is on the homepage
-         rather than only on a page most visitors never open. -->
-    <section class="section mv-dark has-glow" aria-labelledby="mv-home-h">
+    <!-- Mission and vision, short form. The full statements live on /about/.
+         The homepage carries the vision as a single line so the ambition is
+         here without the section competing with the conversion path below. -->
+    <section class="section mv-dark mv-short has-glow" aria-labelledby="mv-home-h">
       <div class="wrap">
-        <div class="intro">
-          <span class="eyebrow">MISSION &amp; VISION</span>
-          <h2 class="h-caps" id="mv-home-h">What we are here to do</h2>
-        </div>
-        <div class="mv-grid">
-          <div class="mv-card mv-mission reveal">
-            <span class="mv-label">Mission</span>
-            <p class="mv-statement">We build everyday capability through structured movement, and we measure it honestly, so what works can be proven, repeated and scaled.</p>
-          </div>
-          <div class="mv-card mv-vision reveal">
-            <span class="mv-label">Vision</span>
-            <p class="mv-statement">Movement recognised and funded as frontline prevention &mdash; for the body and the mind.</p>
-          </div>
-        </div>
-        <p class="mv-foot">It starts with one person and one session. <a href="/about/">Read the full story</a></p>
+        <span class="eyebrow">MISSION &amp; VISION</span>
+        <h2 class="mv-short-line" id="mv-home-h">Movement recognised and funded as frontline prevention &mdash; for the body and the mind.</h2>
+        <p class="mv-short-sub">We build everyday capability through structured movement, and we measure it honestly, so what works can be proven, repeated and scaled. <a href="/about/">Read the full story</a></p>
       </div>
     </section>
 
@@ -226,6 +214,20 @@
       </div>
     </section>
 
+    <!-- What's happening at Everest. Cards come from data/whats-happening.json:
+         tools/generate.js writes them between the markers at build time, and
+         js/whats-happening.js renders them itself on an unbuilt checkout.
+         Do not hand-write cards here; edit the JSON. -->
+    <section class="wh" aria-labelledby="wh-h">
+      <div class="rail">
+        <div class="wh-head reveal">
+          <h2 class="h-caps" id="wh-h">What&rsquo;s happening at Everest</h2>
+          <p>Current pilots, partnerships and community programs building stronger people and stronger communities.</p>
+        </div>
+        <div class="wh-wall reveal" id="wh-wall" data-src="/data/whats-happening.json"><!-- wh:start --><!-- wh:end --></div>
+      </div>
+    </section>
+
     <!-- GET SOME — brand action phrase. Deliberately used once on the page:
          an action phrase lands harder as punctuation than as decoration.
          The wordmark is an alpha mask tinted by CSS, so it follows the brand
@@ -273,5 +275,6 @@
 
   <script src="/js/layout.js" defer></script>
   <script src="/js/main.js" defer></script>
+  <script src="/js/whats-happening.js" defer></script>
 </body>
 </html>
