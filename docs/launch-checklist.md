@@ -45,7 +45,6 @@ SEO_INDEX=1 SITE_URL=https://www.everest-pt.com node tools/generate.js
 | 3 | **Set `SITE_URL`** | The launch switch. |
 | 4 | **Contact form endpoint** | `js/contact.js` has an empty `FORM_ENDPOINT`, so the form falls back to opening the visitor's mail app. A meaningful share of people abandon at that point. Web3Forms or Formspree, five minutes. |
 | 5 | **Written permission from Busy Bumbles, Moral Compass and Plus Fitness Rolleston** | They are named on `/organisations/`. Fine while noindexed; not fine once public without their say-so. |
-| 6 | **The EightySix Digital footer credit** | `js/layout.js` says "Another website designed and built by EightySix Digital" and links out from every page. That is not who built this site. If it is a leftover, remove it. If it is a deliberate arrangement, keep it but add `rel="nofollow"`. |
 
 ## Should do before launch, not blocking
 
@@ -55,6 +54,14 @@ SEO_INDEX=1 SITE_URL=https://www.everest-pt.com node tools/generate.js
 - **Balmanno and The Steam Tent store URLs** — still `TODO` in `about/index.html`.
 - **HIIT For Hope figures** from the MBIE post-event report.
 - **Team details and photos** for `/team/`.
+- **EightySix Digital footer credit — no action required.** The repository sits
+  under the `eightysix-digital` GitHub organisation, so the "designed and built
+  by EightySix Digital" credit in `js/layout.js` is legitimate. An earlier
+  version of this checklist wrongly listed it as a launch blocker. One optional
+  tweak, and EightySix Digital's call: the credit links from every page to a
+  web-design keyword page, and Google's link spam policy names links spread
+  across site footers and templates as an example, so a `rel="nofollow"` on
+  that link is the conservative choice.
 
 ## What's happening wall (homepage)
 
