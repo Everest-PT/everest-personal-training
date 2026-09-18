@@ -1126,7 +1126,9 @@ h1, h2, h3, .display { font-family: var(--display); letter-spacing: -0.01em; }
 /* full-bleed responsive: stack division panels vertically (no scroll-pin) */
 @media (max-width: 860px) {
   .division { position: static; grid-template-columns: 1fr; min-height: 0; box-shadow: none; }
-  .division .media { min-height: 46vh; order: 0 !important; }
+  /* 58vh, not 46: the panel photos are portrait (0.8), and at 46vh a phone
+     cut 10% off the top and bottom of every one of them. */
+  .division .media { min-height: 58vh; order: 0 !important; }
   .division:nth-child(even) .media { order: 0; }
   .division .body { padding: 52px 26px; }
 }
