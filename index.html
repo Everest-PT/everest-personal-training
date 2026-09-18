@@ -148,6 +148,20 @@
       </div>
     </section>
 
+    <!-- What's happening at Everest. Cards come from data/whats-happening.json:
+         tools/generate.js writes them between the markers at build time, and
+         js/whats-happening.js renders them itself on an unbuilt checkout.
+         Do not hand-write cards here; edit the JSON. -->
+    <section class="wh" aria-labelledby="wh-h">
+      <div class="rail">
+        <div class="wh-head reveal">
+          <h2 class="h-caps" id="wh-h">What&rsquo;s happening at Everest</h2>
+          <p>Current pilots, partnerships and community programs building stronger people and stronger communities.</p>
+        </div>
+        <div class="wh-wall reveal" id="wh-wall" data-src="/data/whats-happening.json"><!-- wh:start --><!-- wh:end --></div>
+      </div>
+    </section>
+
     <!-- 3. Division campaign panels -->
     <section aria-label="What we do">
       <article class="division">
@@ -227,20 +241,6 @@
         </div>
         <div class="impact-stats" id="impact-grid"></div>
         <p class="impact-note" id="impact-note" hidden>Indicative figures shown for layout. Each metric is verified against a source, date range and method before publication.</p>
-      </div>
-    </section>
-
-    <!-- What's happening at Everest. Cards come from data/whats-happening.json:
-         tools/generate.js writes them between the markers at build time, and
-         js/whats-happening.js renders them itself on an unbuilt checkout.
-         Do not hand-write cards here; edit the JSON. -->
-    <section class="wh" aria-labelledby="wh-h">
-      <div class="rail">
-        <div class="wh-head reveal">
-          <h2 class="h-caps" id="wh-h">What&rsquo;s happening at Everest</h2>
-          <p>Current pilots, partnerships and community programs building stronger people and stronger communities.</p>
-        </div>
-        <div class="wh-wall reveal" id="wh-wall" data-src="/data/whats-happening.json"><!-- wh:start --><!-- wh:end --></div>
       </div>
     </section>
 
