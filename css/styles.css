@@ -954,7 +954,10 @@ h1, h2, h3, .display { font-family: var(--display); letter-spacing: -0.01em; }
 .impact-band { position: relative; color: #fff; overflow: hidden;
   padding: clamp(80px, 13vh, 140px) 0; background: var(--black); }
 .impact-band .impact-bg { position: absolute; inset: 0; z-index: 0;
-  background-image: linear-gradient(180deg, rgba(10,10,10,.86), rgba(4,52,44,.9)), url('/assets/img/placeholder-horizontal.jpg');
+  /* Gradient only. This used to sit over a stock photo that was 86-90%
+     covered anyway; the section takes its depth from the gradient and the
+     .has-glow animation on the section itself. */
+  background-image: linear-gradient(180deg, rgba(10,10,10,.86), rgba(4,52,44,.9));
   background-size: cover; background-position: center; }
 .impact-band .rail { position: relative; z-index: 2; }
 .impact-band .ib-head { display: flex; align-items: flex-end; justify-content: space-between;
@@ -1114,7 +1117,10 @@ h1, h2, h3, .display { font-family: var(--display); letter-spacing: -0.01em; }
 .closer { position: relative; color: #fff; overflow: hidden; text-align: center;
   min-height: 66vh; display: flex; align-items: center; }
 .closer .closer-bg { position: absolute; inset: 0; z-index: 0;
-  background-image: linear-gradient(180deg, rgba(10,10,10,.72), rgba(4,52,44,.86)), url('/assets/img/placeholder-vertical.jpg');
+  /* Opaque, not translucent: the stock photo that used to sit under this
+     gradient is gone, and .closer sets no background of its own, so a
+     see-through gradient would leave white behind white text. */
+  background-image: linear-gradient(180deg, #0a0a0a, #04342c);
   background-size: cover; background-position: center 30%; }
 .closer .rail { position: relative; z-index: 2; }
 .closer h2 { font-size: clamp(32px, 5.4vw, 68px); font-weight: 700; text-transform: uppercase;
