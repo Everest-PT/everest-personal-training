@@ -395,15 +395,6 @@ h1, h2, h3 { font-weight: 500; margin: 0; line-height: 1.12; }
 .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .feature-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
 
-/* angled split: white content left, image on the right of a diagonal */
-.train-split { position: relative; overflow: hidden; }
-.train-split > .wrap { position: relative; z-index: 1; }
-.train-split .intro, .train-split .tab-btns, .train-split .tab-panel { max-width: 560px; }
-.train-media { position: absolute; top: 0; right: 0; bottom: 0; left: 48%; z-index: 0;
-  background-image: url('/assets/img/placeholder-horizontal.jpg');
-  background-size: cover; background-position: center;
-  clip-path: polygon(42% 0, 100% 0, 100% 100%, 16% 100%); }
-@media (max-width: 900px) { .train-media { display: none; } }
 .feature { background: #fff; border: 1px solid rgba(0,0,0,.04); border-radius: 18px; padding: 28px;
   box-shadow: 0 12px 30px rgba(17,17,17,.05); }
 .bg-cloud .feature, .bg-mist .feature { background: #fff; }
@@ -1212,7 +1203,7 @@ h1, h2, h3, .display { font-family: var(--display); letter-spacing: -0.01em; }
 .result-head i { font-size: 18px; }
 .result-card { display: grid; grid-template-columns: 260px 1fr; background: #fff; color: var(--black);
   border-radius: 20px; overflow: hidden; box-shadow: 0 34px 74px rgba(0,0,0,.45); }
-.result-media { background-image: url('/assets/img/placeholder-horizontal.jpg'); background-size: cover;
+.result-media { background-image: url('/assets/img/everest365-app-training-v1.webp'); background-size: cover;
   background-position: center; min-height: 230px; }
 .result-body { padding: 30px; }
 .result-body h3 { font-family: var(--display); font-size: 26px; font-weight: 700; margin: 0 0 8px; }
@@ -1344,9 +1335,6 @@ h1, h2, h3, .display { font-family: var(--display); letter-spacing: -0.01em; }
 /* --- Assurance band (trust device, e.g. safeguarding) --- */
 .assurance { position: relative; background: var(--teal-darkest); color: #fff; overflow: hidden;
   padding: clamp(60px, 9vh, 104px) 0; }
-.assurance .assurance-bg { position: absolute; inset: 0; z-index: 0;
-  background-image: linear-gradient(rgba(4,52,44,.9), rgba(4,52,44,.94)), url('/assets/img/placeholder-horizontal.jpg');
-  background-size: cover; background-position: center; }
 .assurance .rail { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
 .assurance .a-head .eyebrow-3 { color: var(--teal-accent); }
 .assurance .a-head h2 { font-size: clamp(26px, 3.4vw, 42px); font-weight: 700; text-transform: uppercase; line-height: 1.04; }

@@ -79,7 +79,7 @@
           <div class="fgrid">
             {% for r in related %}
             <a class="fcard" href="{{ r.url }}">
-              <div class="fpic{% if r.image_style != 'hero' %} is-poster{% endif %}" style="background-image:url('{{ r.featured_image or '/assets/img/placeholder-horizontal.jpg' }}')">{% if r.tags %}<span class="fchip">{{ r.tags[0] }}</span>{% endif %}</div>
+              <div class="fpic{% if r.image_style != 'hero' %} is-poster{% endif %}" style="background-image:url('{{ r.featured_image or '/assets/img/og-default.jpg' }}')">{% if r.tags %}<span class="fchip">{{ r.tags[0] }}</span>{% endif %}</div>
               <div class="fbody">
                 <p class="fmeta">{{ r.date_display }} · {{ r.read_time }} min read</p>
                 <h3>{{ r.title }}</h3>
