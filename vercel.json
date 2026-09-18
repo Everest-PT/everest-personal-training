@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
   "buildCommand": "python3 -m pip install -r requirements.txt -t .pydeps && PYTHONPATH=.pydeps python3 tools/build_blog.py && node tools/generate.js",
   "outputDirectory": ".",
   "cleanUrls": true,
