@@ -36,6 +36,25 @@ To sanity-check before flipping, run a production build locally:
 SEO_INDEX=1 SITE_URL=https://www.everest-pt.com node tools/generate.js
 ```
 
+## Hosting
+
+Moved to Everest's own accounts on 21 September 2026, after the repository was
+transferred off the eightysix-digital organisation and the previous Vercel
+hosting stopped building it.
+
+| | |
+|---|---|
+| Repository | `Everest-PT/everest-personal-training` — note **Everest-PT is a personal GitHub account, not an organisation**, so app settings live under `/settings/installations`, not `/organizations/...` |
+| Vercel project | `everest-personal-training`, connected to that repo, so a push to `main` deploys |
+| Deploy hook | Created ("Daily rebuild", branch `main`) and stored as the `VERCEL_DEPLOY_HOOK` repo secret, which is what the scheduled rebuild workflow fires |
+| Framework | Pinned to "Other" via `"framework": null` in `vercel.json`. Vercel otherwise detects this repo as Python because of `requirements.txt` and fails the build looking for a Python entrypoint |
+| Previews | Behind Vercel Authentication, so preview URLs only open for someone signed in to the Vercel account |
+
+The old `everest-personal-training.vercel.app` address belonged to the previous
+host's project and is no longer updated. It is still the fallback `SITE_URL` in
+`tools/generate.js`, which is harmless while the site is noindexed but is
+another reason to set `SITE_URL` properly at launch.
+
 ## Blocking launch
 
 | # | Item | Why it blocks |
@@ -50,7 +69,6 @@ SEO_INDEX=1 SITE_URL=https://www.everest-pt.com node tools/generate.js
 
 - **Remaining 4 checkout links** — Starter Strength, Build/Hypertrophy, Run Strong, Strength & Stretch. Empty `checkoutUrl` in `data/programs.json` means those cards have no way to buy.
 - **Social profile URLs** — feed them into `sameAs` in the JSON-LD (`tools/generate.js`, `businessGraph()`). This is how Google ties the site to the profiles.
-- **`VERCEL_DEPLOY_HOOK`** repo secret — scheduled rebuilds fail without it.
 - **Balmanno and The Steam Tent store URLs** — still `TODO` in `about/index.html`.
 - **HIIT For Hope figures** from the MBIE post-event report.
 - **Team details and photos** for `/team/`.
