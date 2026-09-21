@@ -125,10 +125,10 @@ explains every field. Outstanding before launch:
 
 ## Lead routing and link tagging
 
-Set up once, in the inbox rather than in the code: **filters on the subject
-tags**, so an organisation enquiry does not arrive looking like an app-programme
-enquiry. `lead-routing.md` has the filter list, the segment map and the link
-tagging conventions, with ready-made tagged links for each channel.
+The seven Gmail labels were created on 22 September 2026 and the matching
+filters are in `gmail-filters.xml`, ready to import in one go - see
+`lead-routing.md`, which also has the segment map and the link tagging
+conventions, with a ready-made tagged link for each channel.
 
 All three forms - contact, programme finder and EMPOWER register - now deliver,
 carry a segment tag, and record which link brought the person.

@@ -51,29 +51,48 @@ collaboration - …`.
 targets and the first-move lines are all in one map at the top of that file.
 Nothing a visitor sees changes when you edit it.
 
-## Inbox filters to set up
+## Inbox filters
 
-Do these once. In Gmail: Settings → Filters and blocked addresses → Create a new
-filter, put the tag in **Subject**, then choose a label.
+**Set up on 22 September 2026.** The seven labels exist in the Gmail account,
+and `gmail-filters.xml` in this folder holds the filters ready to import:
+Gmail → Settings → See all settings → Filters and Blocked Addresses → Import
+filters → choose that file → Open file → tick all seven → Create filters.
 
-| Subject contains | Do this |
-|---|---|
-| `[ORG]` | Label **Leads/Organisations**, star it, never send to spam |
-| `[PARTNER]` | Label **Leads/Partnership**, star it |
-| `[REFERRAL]` | Label **Leads/Referral**, star it |
-| `[ELITE]` | Label **Leads/Elite** |
-| `[EMPOWER]` | Label **Leads/EMPOWER** |
-| `[PT]` | Label **Leads/Personal Training** |
+Every filter matches **both** the sender `notify@web3forms.com` and the subject
+tag, so an ordinary email that happens to contain the word "elite" or "org"
+cannot be filed as a lead. Nothing skips the inbox - a lead has to land in front
+of you. The seventh filter labels anything from the form service whatever its
+subject, so an enquiry is never lost if a tag is ever missing.
 
-Two worth adding beyond the tags:
+Filters live on the account, not the device, so importing once covers phone and
+desktop. To change one afterwards, edit it in Gmail and update the XML here so
+the two do not drift.
 
-- **Never send to spam** on anything from `@web3forms.com`. A form service is
-  exactly the kind of sender a filter gets wrong, and a lead in the spam folder
-  is a lead lost.
-- A filter on `came_from` is not possible — it is in the body, not the subject —
-  but searching `"came_from" instagram` finds every enquiry a channel produced.
+What the import creates:
 
-Outlook works the same way through Rules, matching on the subject.
+| Subject tag | Label | Also |
+|---|---|---|
+| `[ORG]` | **Leads/Organisations** | starred, marked important, never spam |
+| `[PARTNER]` | **Leads/Partnership** | starred, marked important, never spam |
+| `[REFERRAL]` | **Leads/Referral** | starred, marked important, never spam |
+| `[ELITE]` | **Leads/Elite** | never spam |
+| `[EMPOWER]` | **Leads/EMPOWER** | never spam |
+| `[PT]` | **Leads/Personal Training** | never spam |
+| *(any, from the form service)* | **Leads** | never spam |
+
+The three starred segments are the ones where a slow reply costs the most: an
+organisation, a partnership and a health referral all involve someone else's
+timetable, not just yours.
+
+**Never send to spam** is on every one of them deliberately. A form service is
+exactly the kind of sender a spam filter gets wrong, and a lead in the spam
+folder is a lead lost.
+
+A filter on `came_from` is not possible - it is in the body, not the subject -
+but searching `"came_from" instagram` finds every enquiry a channel produced.
+
+If the mailbox ever moves to Outlook, the same logic goes in Rules, matching on
+sender and subject.
 
 ## Tagging your links
 

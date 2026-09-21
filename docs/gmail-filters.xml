@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Everest lead routing: Gmail filters.
+
+     Import into Gmail: Settings (gear) > See all settings > Filters and
+     Blocked Addresses > Import filters > choose this file > Open file > tick
+     all seven > Create filters.
+
+     Every filter is scoped to notify@web3forms.com as well as the subject tag,
+     so nothing that merely happens to contain the word "elite" or "org" can be
+     filed as a lead. Nothing skips the inbox: a lead must still land in front
+     of you. The last filter is a safety net that labels anything from the form
+     service, so an enquiry is never lost if a tag is ever missing.
+
+     Regenerate or edit alongside docs/lead-routing.md, which explains the
+     segments. Filters are per-account, not per-device, so importing once
+     covers phone and desktop. -->
+<feed xmlns='http://www.w3.org/2005/Atom' xmlns:apps='http://schemas.google.com/apps/2006'>
+  <title>Everest lead routing</title>
+  <id>tag:mail.google.com,2008:filters:everest-leads</id>
+  <updated>2026-09-22T00:00:00Z</updated>
+  <author>
+    <name>Everest Personal Training</name>
+    <email>jared@everest-pt.com</email>
+  </author>
+
+  <entry>
+    <category term='filter'></category>
+    <title>Everest lead: Organisations</title>
+    <id>tag:mail.google.com,2008:filter:everest-org</id>
+    <updated>2026-09-22T00:00:00Z</updated>
+    <content></content>
+    <apps:property name='from' value='notify@web3forms.com'/>
+    <apps:property name='subject' value='[ORG]'/>
+    <apps:property name='label' value='Leads/Organisations'/>
+    <apps:property name='shouldStar' value='true'/>
+    <apps:property name='shouldNeverSpam' value='true'/>
+    <apps:property name='shouldAlwaysMarkAsImportant' value='true'/>
+    <apps:property name='sizeOperator' value='s_sl'/>
+    <apps:property name='sizeUnit' value='s_smb'/>
+  </entry>
+
+  <entry>
+    <category term='filter'></category>
+    <title>Everest lead: Partnership</title>
+    <id>tag:mail.google.com,2008:filter:everest-partner</id>
+    <updated>2026-09-22T00:00:00Z</updated>
+    <content></content>
+    <apps:property name='from' value='notify@web3forms.com'/>
+    <apps:property name='subject' value='[PARTNER]'/>
+    <apps:property name='label' value='Leads/Partnership'/>
+    <apps:property name='shouldStar' value='true'/>
+    <apps:property name='shouldNeverSpam' value='true'/>
+    <apps:property name='shouldAlwaysMarkAsImportant' value='true'/>
+    <apps:property name='sizeOperator' value='s_sl'/>
+    <apps:property name='sizeUnit' value='s_smb'/>
+  </entry>
+
+  <entry>
+    <category term='filter'></category>
+    <title>Everest lead: Health referral</title>
+    <id>tag:mail.google.com,2008:filter:everest-referral</id>
+    <updated>2026-09-22T00:00:00Z</updated>
+    <content></content>
+    <apps:property name='from' value='notify@web3forms.com'/>
+    <apps:property name='subject' value='[REFERRAL]'/>
+    <apps:property name='label' value='Leads/Referral'/>
+    <apps:property name='shouldStar' value='true'/>
+    <apps:property name='shouldNeverSpam' value='true'/>
+    <apps:property name='shouldAlwaysMarkAsImportant' value='true'/>
+    <apps:property name='sizeOperator' value='s_sl'/>
+    <apps:property name='sizeUnit' value='s_smb'/>
+  </entry>
+
+  <entry>
+    <category term='filter'></category>
+    <title>Everest lead: Elite</title>
+    <id>tag:mail.google.com,2008:filter:everest-elite</id>
+    <updated>2026-09-22T00:00:00Z</updated>
+    <content></content>
+    <apps:property name='from' value='notify@web3forms.com'/>
+    <apps:property name='subject' value='[ELITE]'/>
+    <apps:property name='label' value='Leads/Elite'/>
+    <apps:property name='shouldNeverSpam' value='true'/>
+    <apps:property name='sizeOperator' value='s_sl'/>
+    <apps:property name='sizeUnit' value='s_smb'/>
+  </entry>
+
+  <entry>
+    <category term='filter'></category>
+    <title>Everest lead: EMPOWER</title>
+    <id>tag:mail.google.com,2008:filter:everest-empower</id>
+    <updated>2026-09-22T00:00:00Z</updated>
+    <content></content>
+    <apps:property name='from' value='notify@web3forms.com'/>
+    <apps:property name='subject' value='[EMPOWER]'/>
+    <apps:property name='label' value='Leads/EMPOWER'/>
+    <apps:property name='shouldNeverSpam' value='true'/>
+    <apps:property name='sizeOperator' value='s_sl'/>
+    <apps:property name='sizeUnit' value='s_smb'/>
+  </entry>
+
+  <entry>
+    <category term='filter'></category>
+    <title>Everest lead: Personal Training</title>
+    <id>tag:mail.google.com,2008:filter:everest-pt</id>
+    <updated>2026-09-22T00:00:00Z</updated>
+    <content></content>
+    <apps:property name='from' value='notify@web3forms.com'/>
+    <apps:property name='subject' value='[PT]'/>
+    <apps:property name='label' value='Leads/Personal Training'/>
+    <apps:property name='shouldNeverSpam' value='true'/>
+    <apps:property name='sizeOperator' value='s_sl'/>
+    <apps:property name='sizeUnit' value='s_smb'/>
+  </entry>
+
+  <entry>
+    <category term='filter'></category>
+    <title>Everest lead: catch-all safety net</title>
+    <id>tag:mail.google.com,2008:filter:everest-all</id>
+    <updated>2026-09-22T00:00:00Z</updated>
+    <content></content>
+    <apps:property name='from' value='notify@web3forms.com'/>
+    <apps:property name='label' value='Leads'/>
+    <apps:property name='shouldNeverSpam' value='true'/>
+    <apps:property name='sizeOperator' value='s_sl'/>
+    <apps:property name='sizeUnit' value='s_smb'/>
+  </entry>
+</feed>
