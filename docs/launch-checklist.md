@@ -65,6 +65,7 @@ another reason to set `SITE_URL` properly at launch.
 | 3 | **Set `SITE_URL`** | The launch switch. |
 | 4 | **Contact form endpoint** | `js/contact.js` has an empty `FORM_ENDPOINT`, so the form falls back to opening the visitor's mail app. A meaningful share of people abandon at that point. Web3Forms or Formspree, five minutes. |
 | 5 | **Written permission from Busy Bumbles, Moral Compass and Plus Fitness Rolleston** | They are named on `/organisations/`. Fine while noindexed; not fine once public without their say-so. |
+| 6 | **Legal review of `/legal/`** | The privacy policy, terms of purchase, health disclaimer, cookie statement and consent sections are now a real draft rather than placeholder text, written from what the site and business actually do. A lawyer should read it before the site is public. Every assumption it makes is listed in `legal-review.md`, along with eleven points needing Jared's confirmation — legal entity and NZBN, GST treatment, cancellation and refund terms, and retention periods among them. |
 
 ## Should do before launch, not blocking
 
