@@ -73,6 +73,13 @@ another reason to set `SITE_URL` properly at launch.
 - **Balmanno and The Steam Tent store URLs** — still `TODO` in `about/index.html`.
 - **HIIT For Hope figures** from the MBIE post-event report.
 - **Team details and photos** for `/team/`.
+- **Jared's headshot and qualifications** for `/about/`. The page still shows
+  a placeholder photo and lists no credentials. A note saying so used to be
+  printed on the live page, where visitors could read it; that note has been
+  removed, so this checklist is now the only record of the task. For a trade
+  anyone can enter, credentials are a trust anchor: REPs registration, first
+  aid and insurance are the ones an individual client looks for, and
+  /organisations/ already promises them "on request".
 - **EightySix Digital footer credit — no action required.** The repository sits
   under the `eightysix-digital` GitHub organisation, so the "designed and built
   by EightySix Digital" credit in `js/layout.js` is legitimate. An earlier
