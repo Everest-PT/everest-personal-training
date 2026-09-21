@@ -14,8 +14,8 @@
      navigate. */
   var NAV = [
     { label: 'Everest Personal Training', short: 'Personal Training', href: '/personal-training/', children: [
-      { label: 'Personal Training', href: '/personal-training/', desc: 'App programs, personalised coaching and 1-on-1 sessions' },
-      { label: 'Programs &amp; pricing', href: '/programs/', desc: 'The full catalogue, with the 60-second finder' }
+      { label: 'Personal Training', href: '/personal-training/', desc: 'App programmes, personalised coaching and 1-on-1 sessions' },
+      { label: 'Programmes &amp; pricing', href: '/programs/', desc: 'The full catalogue, with the 60-second finder' }
     ] },
     { label: 'Everest Elite', short: 'Elite', href: '/elite/', children: [
       { label: 'Everest Athlete', href: '/elite/#athlete', desc: 'Sport-specific strength and conditioning for athletes and squads' },
@@ -113,7 +113,7 @@
             '<div class="footer-col">' +
               '<h3>Train</h3>' +
               '<a href="/personal-training/">Personal Training</a>' +
-              '<a href="/programs/">Programs &amp; pricing</a>' +
+              '<a href="/programs/">Programmes &amp; pricing</a>' +
               '<a href="/elite/">Everest Elite</a>' +
               '<a href="/empower/">EMPOWER</a>' +
             '</div>' +

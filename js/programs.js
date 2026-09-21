@@ -26,7 +26,7 @@
   }
 
   var GROUPS = [
-    { key: 'plan', title: 'Weekly programs', note: 'Ongoing training, billed weekly.' },
+    { key: 'plan', title: 'Weekly programmes', note: 'Ongoing training, billed weekly.' },
     { key: 'service', title: 'One-off services', note: 'Paid as you go, no subscription.' },
     { key: 'proposal', title: 'By proposal', note: 'Scoped and quoted around your situation.' }
   ];
@@ -37,7 +37,7 @@
      still groups within each unit below. */
   var CATEGORIES = [
     { key: 'personal-training', title: 'Everest Personal Training',
-      note: 'App programs, personalised coaching and 1-on-1 sessions.', href: '/personal-training/' },
+      note: 'App programmes, personalised coaching and 1-on-1 sessions.', href: '/personal-training/' },
     { key: 'elite', title: 'Everest Elite',
       note: 'Performance coaching for athletes and executives.', href: '/elite/' },
     { key: 'organisations', title: 'Everest Organisations',

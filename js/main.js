@@ -65,9 +65,13 @@
     var visible = data.metrics.filter(function (m) { return m.display; });
     if (!visible.length) return; // keep section hidden until figures are verified
 
+    /* The real figure is the default text. If the counter never animates - no
+       IntersectionObserver, a script error, a printed page - the visitor sees
+       the number rather than a zero under "Real people. Real progress." */
     grid.innerHTML = visible.map(function (m) {
       return '<div class="metric"><div class="num" data-target="' + m.value + '" data-suffix="' +
-        (m.suffix || '') + '">0</div><div class="cap">' + esc(m.label) + '</div></div>';
+        (m.suffix || '') + '">' + m.value + (m.suffix || '') + '</div><div class="cap">' +
+        esc(m.label) + '</div></div>';
     }).join('');
     section.hidden = false;
     var note = document.getElementById('impact-note');
@@ -81,6 +85,8 @@
       nums.forEach(function (n) { n.textContent = n.dataset.target + (n.dataset.suffix || ''); });
       return;
     }
+    if (!('IntersectionObserver' in window)) return;  /* leave the real figures in place */
+    nums.forEach(function (n) { n.textContent = '0' + (n.dataset.suffix || ''); });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { animate(e.target); io.unobserve(e.target); }

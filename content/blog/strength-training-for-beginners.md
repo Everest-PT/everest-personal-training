@@ -14,8 +14,8 @@ faq:
     a: "No. You can begin at home with bodyweight movements and a couple of adjustable dumbbells. A gym gives you more equipment as you progress, but the first goal is simply learning the movements and building consistency."
   - q: "How long until I see results from strength training?"
     a: "Most beginners feel stronger and more capable within four to six weeks, with visible changes following over a few months. Early progress comes quickly because your body adapts fast when the training is structured and consistent."
-  - q: "Should a beginner use a program or just wing it?"
-    a: "A structured program makes a big difference. It removes the guesswork, keeps your progress measurable, and stops the common beginner mistake of doing random workouts that never build on each other."
+  - q: "Should a beginner use a programme or just wing it?"
+    a: "A structured programme makes a big difference. It removes the guesswork, keeps your progress measurable, and stops the common beginner mistake of doing random workouts that never build on each other."
 ---
 
 If you have ever stood in a gym unsure what to do, done a few random exercises, and left wondering whether any of it counted, you are not alone. Most people do not struggle with effort. They struggle with **not having a clear plan**.

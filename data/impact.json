@@ -2,7 +2,7 @@
   "note": "Figures supplied by Jared (Everest) on 2 August 2026 as operational totals to date. These are no longer placeholders. Before they go in front of a funder, council, ACC or Health New Zealand, record the underlying method for each — what counts as a 'program', how unique people are de-duplicated across programs, and how retention is calculated — because that is the first thing a funding or procurement process asks for. Never round a figure upward. If a number changes, update it here rather than anywhere in the markup.",
   "metrics": [
     {
-      "label": "programs delivered",
+      "label": "programmes delivered",
       "value": 1000,
       "suffix": "+",
       "source": "Everest internal records",

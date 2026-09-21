@@ -124,7 +124,7 @@ fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap);
 const core = pages.filter(p => !p.path.startsWith('/blog/') || p.path === '/blog/');
 const llms = `# ${SITE_NAME}\n\n` +
   `> Personal training, fitness and human performance coaching in Christchurch and across Canterbury, New Zealand. ` +
-  `Online, in-person and hybrid coaching for everyday people, athletes, young people and organisations, including app-based programs, ` +
+  `Online, in-person and hybrid coaching for everyday people, athletes, young people and organisations, including app-based programmes, ` +
   `personalised coaching, youth development (EMPOWER), performance (Everest Elite) and corporate/workforce wellness.\n\n` +
   `## Pages\n\n` +
   core.map(p => `- [${p.title}](${p.url})${p.description ? ': ' + p.description : ''}`).join('\n') +
