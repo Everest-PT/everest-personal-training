@@ -2843,3 +2843,9 @@ html, body { overflow-x: clip; }
   .rc-fields { grid-template-columns: 1fr; }
   .rc-fields .btn { width: 100%; justify-content: center; }
 }
+
+/* Honeypot. Off-screen rather than display:none, because some bots skip
+   anything explicitly hidden, and out of the accessibility tree entirely via
+   aria-hidden and tabindex="-1" on the field itself, so nobody using a screen
+   reader or a keyboard ever meets it. */
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }

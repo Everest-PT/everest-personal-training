@@ -260,6 +260,14 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var status = document.getElementById('rc-status');
+
+      /* Filled in means a bot. Confirm as normal and send nothing. */
+      var hp = form.querySelector('[name="website"]');
+      if (hp && hp.value) {
+        form.innerHTML = '<p class="rc-done"><i class="ti ti-check" aria-hidden="true"></i> Sent.</p>';
+        return;
+      }
+
       var name = (document.getElementById('rc-name').value || '').trim();
       var email = (document.getElementById('rc-email').value || '').trim();
       if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
@@ -284,7 +292,8 @@
         subject: 'Finder result for ' + name + ' (' + captured.programme + ')',
         name: name, email: email, programme: captured.programme,
         goal: a.goal || '', level: a.level || '', support: a.support || '',
-        audience: a.audience || '', message: body
+        audience: a.audience || '', message: body,
+        from_name: 'Everest website', replyto: email, _replyto: email
       };
       if (cfg.accessKey) payload.access_key = cfg.accessKey;
 

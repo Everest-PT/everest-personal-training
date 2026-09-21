@@ -49,6 +49,11 @@
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+
+    /* Filled in means a bot. Say nothing useful and do not send. */
+    var hp = form.querySelector('[name="website"]');
+    if (hp && hp.value) { form.reset(); syncOrg(); status.textContent = 'Thanks. We will be in touch soon.'; return; }
+
     if (!form.checkValidity()) { form.reportValidity(); return; }
     var data = {
       type: typeSel.value,
@@ -63,7 +68,12 @@
       var payload = {
         name: data.name, email: data.email, type: data.type,
         organisation: data.organisation, message: data.message,
-        subject: 'Website enquiry (' + data.type + ') from ' + data.name
+        subject: 'Website enquiry (' + data.type + ') from ' + data.name,
+        /* So a reply in the inbox goes to the enquirer, not to the form
+           service. Web3Forms reads replyto, Formspree reads _replyto. */
+        from_name: 'Everest website',
+        replyto: data.email,
+        _replyto: data.email
       };
       if (ACCESS_KEY) payload.access_key = ACCESS_KEY;   /* Web3Forms */
       fetch(FORM_ENDPOINT, {
