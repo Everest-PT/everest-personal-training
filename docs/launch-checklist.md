@@ -46,6 +46,7 @@ hosting stopped building it.
 |---|---|
 | Repository | `Everest-PT/everest-personal-training` — note **Everest-PT is a personal GitHub account, not an organisation**, so app settings live under `/settings/installations`, not `/organizations/...` |
 | Vercel project | `everest-personal-training`, connected to that repo, so a push to `main` deploys |
+| Production URL | **https://everest-personal-training-sooty.vercel.app** — the clean alias. Two others exist (`-everest-personal-training`, `-git-main-...`). Per-deployment URLs sit behind Vercel Authentication and show a login page rather than the site, so always check this one |
 | Deploy hook | Created ("Daily rebuild", branch `main`) and stored as the `VERCEL_DEPLOY_HOOK` repo secret, which is what the scheduled rebuild workflow fires |
 | Framework | Pinned to "Other" via `"framework": null` in `vercel.json`. Vercel otherwise detects this repo as Python because of `requirements.txt` and fails the build looking for a Python entrypoint |
 | Previews | Behind Vercel Authentication, so preview URLs only open for someone signed in to the Vercel account |
