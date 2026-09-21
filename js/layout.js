@@ -31,6 +31,29 @@
     ] }
   ];
 
+  /* Social profiles. Deliberately empty: the footer used to show Instagram,
+     Facebook and LinkedIn icons all pointing at "#", so clicking one did
+     nothing on every page of the site. An icon that goes nowhere is worse than
+     no icon.
+
+     Add a url and that icon appears; leave it blank and it stays hidden. When
+     you add one, mirror it into sameAs in businessGraph() in
+     tools/generate.js, which is how Google ties a profile to the business. */
+  var SOCIAL = [
+    { label: 'Instagram', icon: 'brand-instagram', url: '' },
+    { label: 'Facebook', icon: 'brand-facebook', url: '' },
+    { label: 'LinkedIn', icon: 'brand-linkedin', url: '' }
+  ];
+
+  function socialHTML() {
+    var live = SOCIAL.filter(function (s) { return s.url; });
+    if (!live.length) return '';
+    return '<div class="footer-social">' + live.map(function (s) {
+      return '<a href="' + s.url + '" aria-label="' + s.label + '" target="_blank" rel="noopener">' +
+        '<i class="ti ti-' + s.icon + '" aria-hidden="true"></i></a>';
+    }).join('') + '</div>';
+  }
+
   var path = location.pathname.replace(/index\.html$/, '');
   if (path.length > 1) path = path.replace(/\/?$/, '/');
 
@@ -103,11 +126,7 @@
           '<div class="footer-brand">' +
             '<a class="logo" href="/"><img class="logo-mark" src="/assets/img/everest-logo-v4.svg" alt="" aria-hidden="true" width="750" height="750" /><span>EVEREST</span></a>' +
             '<p>Structured training, expert coaching and human performance solutions for everyday people, athletes, young people and organisations.</p>' +
-            '<div class="footer-social">' +
-              '<a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram" aria-hidden="true"></i></a>' +
-              '<a href="#" aria-label="Facebook"><i class="ti ti-brand-facebook" aria-hidden="true"></i></a>' +
-              '<a href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>' +
-            '</div>' +
+            socialHTML() +
           '</div>' +
           '<div class="footer-cols">' +
             '<div class="footer-col">' +
