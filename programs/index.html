@@ -148,6 +148,29 @@
                 </div>
               </div>
             </div>
+
+            <!-- The ask comes after the answer, never before it. The result is
+                 already on screen and the price is already public, so this is
+                 an offer rather than a toll gate. The finder's own answers ride
+                 along with it, which is what makes the lead worth having. -->
+            <form class="result-capture" id="finder-capture" novalidate hidden>
+              <p class="rc-lead"><strong>Want this emailed to you?</strong> We will send your match, what it
+                costs and the first thing to do. Then we leave you alone unless you reply.</p>
+              <div class="rc-fields">
+                <div class="form-field">
+                  <label for="rc-name">First name</label>
+                  <input id="rc-name" name="name" type="text" autocomplete="given-name" />
+                </div>
+                <div class="form-field">
+                  <label for="rc-email">Email</label>
+                  <input id="rc-email" name="email" type="email" autocomplete="email" inputmode="email" />
+                </div>
+                <button class="btn btn-accent" type="submit">Email me my match <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+              </div>
+              <p class="rc-note"><i class="ti ti-lock" aria-hidden="true"></i> Your result and your email come to
+                us and nowhere else. No list, and no newsletter unless you ask for one.</p>
+              <p class="rc-status" id="rc-status" role="status"></p>
+            </form>
           </div>
         </div>
       </div>
@@ -281,6 +304,7 @@
   <div id="sticky-cta"></div>
 
   <script src="/js/layout.js" defer></script>
+  <script src="/js/form-config.js" defer></script>
   <script src="/js/programs.js" defer></script>
   <!-- Vercel Web Analytics: cookieless, aggregate, and served from our own
        domain, so the site still makes no third-party request. Enable it in

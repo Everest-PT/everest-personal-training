@@ -231,9 +231,90 @@
     if (/^https?:\/\//.test(href)) { cta.setAttribute('target', '_blank'); cta.setAttribute('rel', 'noopener'); }
     cta.innerHTML = esc(best.cta) + ' <i class="ti ti-arrow-right" aria-hidden="true"></i>';
 
+    track('finder_result', { programme: best.slug || '' });
+    setupCapture(best, answers);
+
     var box = document.getElementById('finder-result');
     box.classList.add('show');
     box.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'nearest' });
+  }
+
+  /* Vercel Web Analytics custom events. Programme slug only: never a name, an
+     email or anything else that could identify the person who filled it in. */
+  function track(name, data) {
+    if (typeof window.va === 'function') {
+      try { window.va('event', { name: name, data: data || {} }); } catch (e) {}
+    }
+  }
+
+  var captured = null;
+
+  function setupCapture(best, answers) {
+    var form = document.getElementById('finder-capture');
+    if (!form) return;
+    captured = { programme: best.name, slug: best.slug || '', answers: answers };
+    form.hidden = false;
+    if (form.getAttribute('data-bound')) return;
+    form.setAttribute('data-bound', '1');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var status = document.getElementById('rc-status');
+      var name = (document.getElementById('rc-name').value || '').trim();
+      var email = (document.getElementById('rc-email').value || '').trim();
+      if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        status.textContent = 'Please add your first name and an email we can reach you on.';
+        return;
+      }
+
+      var cfg = window.EVEREST_FORM || {};
+      var a = captured.answers || {};
+      var body = [
+        'Programme finder result',
+        '',
+        'Name: ' + name,
+        'Email: ' + email,
+        'Best fit: ' + captured.programme,
+        'Goal: ' + (a.goal || '-'),
+        'Level: ' + (a.level || '-'),
+        'Support: ' + (a.support || '-'),
+        'Audience: ' + (a.audience || '-')
+      ].join('\n');
+      var payload = {
+        subject: 'Finder result for ' + name + ' (' + captured.programme + ')',
+        name: name, email: email, programme: captured.programme,
+        goal: a.goal || '', level: a.level || '', support: a.support || '',
+        audience: a.audience || '', message: body
+      };
+      if (cfg.accessKey) payload.access_key = cfg.accessKey;
+
+      track('finder_email_submitted', { programme: captured.slug });
+
+      function done(msg) {
+        form.innerHTML = '<p class="rc-done"><i class="ti ti-check" aria-hidden="true"></i> ' + esc(msg) + '</p>';
+      }
+
+      if (cfg.endpoint) {
+        status.textContent = 'Sending...';
+        fetch(cfg.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(function (r) {
+          if (!r.ok) throw new Error('bad response');
+          done('Sent. We will email your match and the first thing to do, usually the same day.');
+        }).catch(function () {
+          status.textContent = 'Something went wrong. Email us at ' + (cfg.fallbackEmail || 'jared@everest-pt.com') + '.';
+        });
+      } else {
+        /* No endpoint connected yet: hand it to the visitor's mail app so the
+           enquiry is not simply lost. Connect js/form-config.js to fix this. */
+        window.location.href = 'mailto:' + (cfg.fallbackEmail || 'jared@everest-pt.com') +
+          '?subject=' + encodeURIComponent(payload.subject) +
+          '&body=' + encodeURIComponent(body);
+        done('Opening your email app. If nothing happens, email us at ' + (cfg.fallbackEmail || 'jared@everest-pt.com') + '.');
+      }
+    });
   }
 
   function resetFinder() {

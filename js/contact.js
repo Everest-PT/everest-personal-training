@@ -18,9 +18,12 @@
 
      Until one is set the form falls back to opening the visitor's email app,
      which many people abandon — so this is worth doing before launch. */
-  var FORM_ENDPOINT = '';
-  var ACCESS_KEY = '';                        /* Web3Forms only */
-  var FALLBACK_EMAIL = 'jared@everest-pt.com';
+  /* Set these in js/form-config.js, which the finder's email step shares, so
+     there is one place to paste the endpoint rather than two. */
+  var CFG = window.EVEREST_FORM || {};
+  var FORM_ENDPOINT = CFG.endpoint || '';
+  var ACCESS_KEY = CFG.accessKey || '';       /* Web3Forms only */
+  var FALLBACK_EMAIL = CFG.fallbackEmail || 'jared@everest-pt.com';
 
   var form = document.getElementById('contact-form');
   if (!form) return;

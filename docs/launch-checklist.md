@@ -63,7 +63,7 @@ another reason to set `SITE_URL` properly at launch.
 | 1 | **Decide the production domain** | Everything above depends on it. See `domain-migration.md` — the old domain holds five years of ranking history and the new one holds none. |
 | 2 | **Attach the domain in Vercel** | Until then the site only exists at the preview URL. |
 | 3 | **Set `SITE_URL`** | The launch switch. |
-| 4 | **Contact form endpoint** | `js/contact.js` has an empty `FORM_ENDPOINT`, so the form falls back to opening the visitor's mail app. A meaningful share of people abandon at that point. Web3Forms or Formspree, five minutes. |
+| 4 | **Form endpoint** | Set it in **`js/form-config.js`**, which both the contact form and the programme finder's "email me my match" step read. Until then both fall back to opening the visitor's own mail app, which works but loses a meaningful share of people. Web3Forms needs no account, just a verified email. Whichever provider you pick, add it to the privacy policy under "Who else sees it". |
 | 5 | **Written permission from Busy Bumbles, Moral Compass and Plus Fitness Rolleston** | They are named on `/organisations/`. Fine while noindexed; not fine once public without their say-so. |
 | 6 | **Legal review of `/legal/`** | The privacy policy, terms of purchase, health disclaimer, cookie statement and consent sections are now a real draft rather than placeholder text, written from what the site and business actually do. A lawyer should read it before the site is public. Every assumption it makes is listed in `legal-review.md`, along with eleven points needing Jared's confirmation — legal entity and NZBN, GST treatment, cancellation and refund terms, and retention periods among them. |
 
