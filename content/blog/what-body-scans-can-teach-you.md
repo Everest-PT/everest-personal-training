@@ -1,8 +1,9 @@
 ---
 title: "What Body Scans Can Teach You: Visceral Fat, Muscle Mass and Smarter Progress Tracking"
+seo_title: "What a Body Scan Shows That the Scale Cannot"
 date: "2026-08-15"
 slug: "what-body-scans-can-teach-you"
-excerpt: "Two people can weigh exactly the same and be in completely different health. Here is what a body scan shows that the scale cannot, and how to read it without over-reading it."
+excerpt: "Two people can weigh the same and be in completely different health. Here is what a body scan shows that the scale cannot, and how to read it."
 featured_image: "/assets/img/blog/body-scans-v1.jpg"
 author: "Everest"
 tags: ["Education", "Body Composition", "Progress"]

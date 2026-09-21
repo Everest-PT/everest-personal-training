@@ -1,5 +1,6 @@
 ---
 title: "Understanding Your Metabolism: The Engine Behind Training, Energy and Body Composition"
+seo_title: "Understanding Your Metabolism"
 date: "2026-08-16"
 slug: "understanding-your-metabolism"
 excerpt: "Metabolism is not just how fast you burn calories. Here is what it actually is, why it appears to slow with age, and the levers that genuinely move it."

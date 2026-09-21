@@ -1,8 +1,9 @@
 ---
 title: "Chicken Tikka Rice Bowls: 52g Protein, Five Servings, One Pan"
+seo_title: "Chicken Tikka Rice Bowls: 52g Protein Meal Prep"
 date: "2026-08-16"
 slug: "chicken-tikka-rice-bowls"
-excerpt: "A high-protein meal prep that reheats properly across the week. Five servings, 52g of protein each, and nothing in it you cannot buy in a normal supermarket shop."
+excerpt: "A high-protein meal prep that reheats properly across the week. Five servings, 52g of protein each, from a normal supermarket shop."
 featured_image: "/assets/img/blog/recipe-chicken-tikka-v1.jpg"
 author: "Everest"
 tags: ["Recipes", "Nutrition", "Meal Prep"]

@@ -1,5 +1,6 @@
 ---
 title: "Strength and Mobility: Why Yoga and Resistance Training Belong Together"
+seo_title: "Strength and Mobility: Yoga With Resistance Work"
 date: "2026-08-11"
 slug: "strength-and-mobility"
 excerpt: "Lifting does not make you stiff and yoga does not make you weak. The two are answering different halves of the same question."

@@ -102,6 +102,8 @@ def parse_post(path):
         "recipe": recipe,
         "image_style": image_style,
         "title": meta["title"],
+        # Shown in search results and browser tabs. Falls back to title.
+        "seo_title": (meta.get("seo_title") or "").strip(),
         "date": date.isoformat(),
         "date_obj": date,
         "date_display": date.strftime("%-d %B %Y"),
@@ -239,7 +241,7 @@ def build_posts(posts):
         related = [p for p in posts if p["slug"] != post["slug"]][:3]
         write(f"blog/{post['slug']}/index.html", tmpl.render(
             post=post, related=related,
-            page_title=f"{post['title']} | {BRAND}",
+            page_title=f"{post['seo_title'] or post['title']} | {BRAND}",
             page_description=post["excerpt"],
             canonical=SITE + post["url"],
             og_title=post["title"], og_image=og_abs(post["og_image"]),
@@ -251,7 +253,7 @@ def build_archive(posts):
     tmpl = env.get_template("templates/blog_archive.html")
     write("blog/index.html", tmpl.render(
         posts=posts,
-        page_title="Blog | Recipes, Training Guides &amp; Insights | Everest Christchurch",
+        page_title="Blog | Training, Nutrition &amp; Recipes | Everest",
         page_description="Recipes, training guides and evidence-led articles on strength, movement and human performance from Everest's Christchurch coaching team.",
         canonical=SITE + "/blog/", og_image=DEFAULT_OG,
         heading="Practical, evidence-led insights.",

@@ -1,5 +1,6 @@
 ---
 title: "Mini Chicken Cheeseburger Meatball Boxes: 43g Protein the Kids Will Actually Eat"
+seo_title: "Chicken Cheeseburger Meatball Boxes: 43g Protein"
 date: "2026-08-15"
 slug: "chicken-cheeseburger-meatball-boxes"
 excerpt: "High-protein meal prep that works for adults and kids out of the same tray. Five servings, 43g of protein each, and it survives a lunchbox."

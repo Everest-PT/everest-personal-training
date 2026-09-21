@@ -1,8 +1,9 @@
 ---
 title: "Muscle Protein Synthesis: Why Training, Protein and Recovery Must Work Together"
+seo_title: "Muscle Protein Synthesis, Explained Simply"
 date: "2026-08-14"
 slug: "muscle-protein-synthesis"
-excerpt: "You do not build muscle in the gym. You create the signal there, and build it over the next two days. Here is what is actually happening, and what it means for how you eat and sleep."
+excerpt: "You do not build muscle in the gym. You create the signal there and build it over the next two days. Here is what that means for eating and sleeping."
 featured_image: "/assets/img/blog/muscle-protein-synthesis-v1.jpg"
 author: "Everest"
 tags: ["Education", "Strength", "Nutrition"]

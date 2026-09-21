@@ -920,7 +920,7 @@ h1, h2, h3, .display { font-family: var(--display); letter-spacing: -0.01em; }
 /* Trimmed from 116px/15ch. At the old size the headline alone ran three lines
    deep and pushed the copy beneath it across the line's midpoint, which sits
    at 64% height where the text column reaches. */
-.cine-hero h1 { font-size: clamp(40px, 7vw, 96px); line-height: .94; font-weight: 700;
+.cine-hero .climb-title { font-size: clamp(40px, 7vw, 96px); line-height: .94; font-weight: 700;
   letter-spacing: -0.02em; text-transform: uppercase; max-width: 13ch; }
 
 /* Hero title emerges a word at a time out of the background image: each word
@@ -933,26 +933,26 @@ h1, h2, h3, .display { font-family: var(--display); letter-spacing: -0.01em; }
    The visible h1 is aria-hidden; the real heading for assistive tech and search
    engines is the .visually-hidden h1 at the top of the page, so nothing is
    hidden from them while this plays. */
-.cine-hero h1.climb-title { perspective: 820px; perspective-origin: 24% 55%; }
-.cine-hero h1.climb-title span { display: inline-block; opacity: 0;
+.cine-hero .climb-title { perspective: 820px; perspective-origin: 24% 55%; }
+.cine-hero .climb-title span { display: inline-block; opacity: 0;
   transform: translateZ(-560px);
   animation: wordEmerge .85s cubic-bezier(.17,.78,.3,1) forwards;
   will-change: transform, opacity, filter; }
-.cine-hero h1.climb-title span:nth-child(1) { animation-delay: 1.2s; }
-.cine-hero h1.climb-title span:nth-child(2) { animation-delay: 1.75s; }
-.cine-hero h1.climb-title span:nth-child(3) { animation-delay: 2.3s; }
-.cine-hero h1.climb-title span:nth-child(4) { animation-delay: 2.85s; }
-.cine-hero h1.climb-title span:nth-child(5) { animation-delay: 3.4s; }
-.cine-hero h1.climb-title span:nth-child(6) { animation-delay: 3.95s; }
-.cine-hero h1.climb-title span:nth-child(7) { animation-delay: 4.5s; }
+.cine-hero .climb-title span:nth-child(1) { animation-delay: 1.2s; }
+.cine-hero .climb-title span:nth-child(2) { animation-delay: 1.75s; }
+.cine-hero .climb-title span:nth-child(3) { animation-delay: 2.3s; }
+.cine-hero .climb-title span:nth-child(4) { animation-delay: 2.85s; }
+.cine-hero .climb-title span:nth-child(5) { animation-delay: 3.4s; }
+.cine-hero .climb-title span:nth-child(6) { animation-delay: 3.95s; }
+.cine-hero .climb-title span:nth-child(7) { animation-delay: 4.5s; }
 @keyframes wordEmerge {
   0%   { opacity: 0; transform: translateZ(-560px); filter: blur(11px); }
   40%  { opacity: 1; }
   100% { opacity: 1; transform: translateZ(0); filter: blur(0); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .cine-hero h1.climb-title { perspective: none; }
-  .cine-hero h1.climb-title span { animation: none; opacity: 1; transform: none; filter: none; }
+  .cine-hero .climb-title { perspective: none; }
+  .cine-hero .climb-title span { animation: none; opacity: 1; transform: none; filter: none; }
 }
 .cine-hero .sub { font-family: var(--font); font-size: clamp(16px, 1.8vw, 21px);
   color: #e4e8ea; max-width: 620px; margin: 24px 0 34px; line-height: 1.5; }

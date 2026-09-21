@@ -1,5 +1,6 @@
 ---
 title: "Crunchy Chicken Popcorn Wrap Boxes: 50g Protein, Baked Not Fried"
+seo_title: "Chicken Popcorn Wrap Boxes: 50g Protein, Baked"
 date: "2026-08-14"
 slug: "crunchy-chicken-popcorn-wrap-boxes"
 excerpt: "The crunch comes from cornflakes and the oven, not a fryer. Five servings, 50g of protein each, and it builds fresh at the table so nothing goes soggy."

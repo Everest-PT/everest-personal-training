@@ -1,5 +1,6 @@
 ---
 title: "Strength Training for Beginners: How to Start Without Feeling Lost"
+seo_title: "Strength Training for Beginners: How to Start"
 date: "2026-07-01"
 slug: "strength-training-for-beginners"
 excerpt: "A simple, no-guesswork guide to starting strength training as a beginner in Christchurch: how often to train, what to do, and how to keep it going."
