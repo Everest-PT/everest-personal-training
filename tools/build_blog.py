@@ -33,7 +33,7 @@ except Exception:  # pragma: no cover
     NZ = datetime.timezone(datetime.timedelta(hours=12))
 
 ROOT = Path(__file__).parent.parent.resolve()
-SITE = os.environ.get("SITE_URL", "https://everest-personal-training.vercel.app").rstrip("/")
+SITE = os.environ.get("SITE_URL", "https://everest-personal-training-sooty.vercel.app").rstrip("/")
 BRAND = "Everest"
 DEFAULT_OG = SITE + "/assets/img/og-default.jpg"
 POSTS_PER_PAGE = 1000  # effectively no pagination

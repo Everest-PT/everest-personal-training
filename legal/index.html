@@ -76,9 +76,11 @@
             you. That includes your training history and goals, a health and readiness
             questionnaire, and any measurements or body composition results we record with you.</li>
         </ul>
-        <p>We collect nothing automatically. This website sets no cookies, runs no analytics and
-          carries no tracking pixels or advertising tags of any kind. See
-          <a href="#cookies">Cookies and tracking</a> below.</p>
+        <p>The only thing collected automatically is anonymous, aggregate usage data: which page
+          was viewed, roughly where the visit came from, the country, and the type of device and
+          browser. It uses no cookies, it does not identify you, and it is never combined with
+          anything else to work out who you are. See <a href="#cookies">Cookies and analytics</a>
+          below.</p>
 
         <h3>Why we collect it</h3>
         <p>To answer your enquiry, to coach you safely and well, to run your programme and payments,
@@ -95,7 +97,7 @@
             full card details.</li>
           <li><strong>Our website host.</strong> This site is hosted by Vercel, which processes
             requests to serve pages and keeps short-term technical logs, including IP addresses, as
-            any web host does.</li>
+            any web host does. Vercel also provides the aggregate analytics described below.</li>
           <li><strong>Our form delivery.</strong> A message you send through a form on this site is
             delivered to us as email.</li>
           <li><strong>Health professionals,</strong> only where you ask us to, or where we are
@@ -193,13 +195,19 @@
         <p>We work alongside health professionals rather than in place of them, and we refer people
           on when something sits outside what we should be handling.</p>
 
-        <h2 id="cookies">Cookies and tracking</h2>
+        <h2 id="cookies">Cookies and analytics</h2>
 
-        <p><strong>This website sets no cookies.</strong> It runs no analytics, no advertising tags,
-          no tracking pixels and no session recording. We do not build a profile of you, and there
-          is no consent banner here because there is nothing to consent to.</p>
-        <p>Every font, icon, image, script and stylesheet is served from our own domain. Loading a
-          page here does not tell any third party that you visited.</p>
+        <p><strong>This website sets no cookies.</strong> It carries no advertising tags, no tracking
+          pixels and no session recording, and it does not build a profile of you. There is no
+          consent banner here because there is nothing to consent to.</p>
+        <p>We do measure how the site is used, because we need to know which pages help people and
+          which do not. That is Vercel Web Analytics, and it is cookieless. It records which page
+          was viewed, where the visit came from, the country, and the type of device and browser.
+          To count repeat visits without storing your IP address, it turns each request into a
+          one-way hash that is thrown away and regenerated every day, so a visitor cannot be
+          followed from one day to the next, let alone across other websites.</p>
+        <p>Every font, icon, image, script and stylesheet, analytics included, is served from our
+          own domain. Loading a page here does not tell any third party that you visited.</p>
         <p>Two ordinary exceptions are worth naming. Our host keeps short-term technical logs of
           requests, as described above. And if you follow a link away from this site — to our
           coaching app, a review profile, or an ambassador brand — that destination has its own
@@ -228,5 +236,9 @@
   <div id="site-footer"></div>
 
   <script src="/js/layout.js" defer></script>
+  <!-- Vercel Web Analytics: cookieless, aggregate, and served from our own
+       domain, so the site still makes no third-party request. Enable it in
+       the Vercel project (Analytics tab) or this 404s harmlessly. -->
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

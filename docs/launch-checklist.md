@@ -108,6 +108,48 @@ explains every field. Outstanding before launch:
   initiatives, and partners who have agreed to be named, go in it. Unconfirmed
   programs stay out until they are agreed.
 
+## Analytics and the weekly audit
+
+**Analytics needs one click from Jared.** The script is on every page, but it
+only starts reporting once Web Analytics is enabled in the Vercel project
+(project → Analytics → Enable). Until then the script 404s harmlessly and no
+data is collected.
+
+It is Vercel Web Analytics, chosen because it is cookieless and served from our
+own domain, so the site still makes no third-party request and still needs no
+consent banner. `/legal/` describes it accurately — if the analytics tool ever
+changes, that page changes in the same commit.
+
+**What it will and will not tell you.** It reports pages, referrers, countries
+and device types in aggregate. It cannot tell you who an individual visitor is,
+and no lawful tool can, for someone who has not identified themselves. Knowing
+who is interested comes from three places instead:
+
+1. the enquiry form, once its endpoint is connected;
+2. UTM tags on links in emails and posts, which survive into analytics and tell
+   you which campaign produced an enquiry;
+3. company-level reverse-IP identification, which names visiting organisations
+   rather than people. Considered and deferred — revisit when B2B traffic
+   justifies the cost and the privacy disclosure.
+
+**The weekly audit** runs from `.github/workflows/seo-report.yml` at 19:00 UTC
+each Sunday, which is Monday morning in New Zealand, and can be run on demand
+from the Actions tab. It audits the deployed site rather than the repo, because
+the build rewrites canonicals, robots tags, the sitemap and llms.txt at deploy
+time.
+
+It checks indexability, canonicals, Open Graph tags, titles and descriptions,
+structured data, word counts, missing alt text, third-party requests, sitemap
+and llms.txt health, whether a 404 really returns 404, and how long it has been
+since a blog post. The report lands in the run summary; errors fail the run so
+GitHub emails you, warnings do not.
+
+Run it yourself any time:
+
+```bash
+node tools/seo-report.js
+```
+
 ## Getting Google ratings
 
 Star ratings next to a business in Google search come from a **Google Business

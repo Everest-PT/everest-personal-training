@@ -20,7 +20,7 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..');
-const SITE_URL = (process.env.SITE_URL || 'https://everest-personal-training.vercel.app').replace(/\/+$/, '');
+const SITE_URL = (process.env.SITE_URL || 'https://everest-personal-training-sooty.vercel.app').replace(/\/+$/, '');
 const SITE_NAME = 'Everest Personal Training';
 
 const force = process.env.SEO_INDEX;

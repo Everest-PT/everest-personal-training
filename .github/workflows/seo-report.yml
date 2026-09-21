@@ -1,0 +1,50 @@
+name: SEO and AEO audit
+
+# Audits the live site weekly and on demand. It checks what a crawler actually
+# receives from the deployed site, not what is in the repo, because the build
+# rewrites canonicals, robots tags, sitemap and llms.txt at deploy time.
+#
+# The report appears in the run summary (Actions tab -> the run -> Summary).
+# If anything in the ERRORS list is found the run fails, which is what makes
+# GitHub email the repo owner. Warnings are advisory and do not fail it.
+
+on:
+  schedule:
+    # 19:00 UTC Sunday = Monday morning in New Zealand
+    - cron: '0 19 * * 0'
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Site to audit (defaults to production)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run the audit
+        id: audit
+        env:
+          SITE_AUDIT_URL: ${{ github.event.inputs.url }}
+        run: |
+          set -o pipefail
+          node tools/seo-report.js | tee "$GITHUB_STEP_SUMMARY"
+
+      - name: Explain a failure
+        if: failure()
+        run: |
+          echo "The audit found errors. Open the Summary above for the detail." >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Common causes: the site is still noindexed before launch (expected)," >> "$GITHUB_STEP_SUMMARY"
+          echo "SITE_URL is unset so canonicals point at the wrong host, or a page" >> "$GITHUB_STEP_SUMMARY"
+          echo "lost its title, description or structured data." >> "$GITHUB_STEP_SUMMARY"

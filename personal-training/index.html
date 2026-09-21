@@ -280,5 +280,9 @@
   <!-- coaching.js only renders the testimonials block here; main.js is
        homepage-specific and would fetch programs.json for nothing -->
   <script src="/js/coaching.js" defer></script>
+  <!-- Vercel Web Analytics: cookieless, aggregate, and served from our own
+       domain, so the site still makes no third-party request. Enable it in
+       the Vercel project (Analytics tab) or this 404s harmlessly. -->
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
