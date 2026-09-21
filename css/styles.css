@@ -2849,3 +2849,9 @@ html, body { overflow-x: clip; }
    aria-hidden and tabindex="-1" on the field itself, so nobody using a screen
    reader or a keyboard ever meets it. */
 .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* The status line under a form - the one place a visitor is told what
+   happened after they pressed the button. Hidden until it has something to
+   say, so it never leaves a gap. */
+.form-status { margin-top: 14px; font-size: 14px; }
+.form-status:empty { display: none; }

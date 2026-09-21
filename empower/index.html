@@ -387,7 +387,7 @@
           <h2>Register your interest in EMPOWER</h2>
           <p>Whether you're a parent, school, after-school care provider, sports club or community organisation, tell us how you'd like to connect with EMPOWER and we'll be in touch.</p>
         </div>
-        <form class="emp-form" novalidate onsubmit="return false">
+        <form class="emp-form" id="empower-form" novalidate>
           <div class="form-row">
             <div class="form-field"><label for="emp-name">Your name</label><input id="emp-name" name="name" type="text" autocomplete="name" /></div>
             <div class="form-field"><label for="emp-email">Email</label><input id="emp-email" name="email" type="email" autocomplete="email" /></div>
@@ -419,8 +419,13 @@
             </select>
           </div>
           <div class="form-field"><label for="emp-message">Message</label><textarea id="emp-message" name="message"></textarea></div>
+          <div class="hp-field" aria-hidden="true">
+            <label for="emp-website">Leave this field empty</label>
+            <input id="emp-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
           <button class="btn btn-emp" type="submit">Register interest <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
-          <p class="form-note">This enquiry form will be connected to Everest Group before launch. In the meantime, email <a href="mailto:jared@everest-pt.com" style="color:var(--emp-pink)">jared@everest-pt.com</a> or use our <a href="/contact/?type=organisation" style="color:var(--emp-pink)">contact page</a>.</p>
+          <p class="form-status" id="emp-status" role="status"></p>
+          <p class="form-note">Prefer email? Write to <a href="mailto:jared@everest-pt.com" style="color:var(--emp-pink)">jared@everest-pt.com</a>, or use our <a href="/contact/?type=organisation" style="color:var(--emp-pink)">contact page</a>.</p>
         </form>
       </div>
     </section>
@@ -430,6 +435,9 @@
   <div id="sticky-cta"></div>
 
   <script src="/js/layout.js" defer></script>
+  <script src="/js/form-config.js" defer></script>
+  <script src="/js/lead.js" defer></script>
+  <script src="/js/empower.js" defer></script>
   <!-- Vercel Web Analytics: cookieless, aggregate, and served from our own
        domain, so the site still makes no third-party request. Enable it in
        the Vercel project (Analytics tab) or this 404s harmlessly. -->

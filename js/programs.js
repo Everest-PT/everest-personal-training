@@ -289,12 +289,22 @@
         'Audience: ' + (a.audience || '-')
       ].join('\n');
       var payload = {
-        subject: 'Finder result for ' + name + ' (' + captured.programme + ')',
         name: name, email: email, programme: captured.programme,
         goal: a.goal || '', level: a.level || '', support: a.support || '',
         audience: a.audience || '', message: body,
         from_name: 'Everest website', replyto: email, _replyto: email
       };
+      /* The finder never asks what kind of enquiry this is, but it already
+         asked who the training is for, which routes it just as well. */
+      if (window.EverestLead) {
+        window.EverestLead.decorate(payload, {
+          segment: window.EverestLead.fromAudience(a.audience),
+          headline: 'Finder result for ' + name + ' (' + captured.programme + ')',
+          form: 'Programme finder'
+        });
+      } else {
+        payload.subject = 'Finder result for ' + name + ' (' + captured.programme + ')';
+      }
       if (cfg.accessKey) payload.access_key = cfg.accessKey;
 
       track('finder_email_submitted', { programme: captured.slug });

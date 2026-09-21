@@ -27,7 +27,7 @@
       "featuredLabel": "Featured pilot",
       "_todo": [
         "TEMPORARY IMAGE: the partnership badge stands in until Rebecca (Busy Bumbles) supplies the EMPOWER sign-up poster. Jared to provide the poster file, then change imageSrc/imageAlt/imageWidth/imageHeight.",
-        "SIGN-UP URL NEEDED: ctaHref points at the EMPOWER register-interest form, which is not yet connected to anything. Jared to provide the real sign-up link. Do not guess it.",
+        "SIGN-UP URL: ctaHref points at the EMPOWER register-interest form, which now works and delivers to the inbox. If a dedicated sign-up link exists once the poster arrives, Jared to provide it. Do not guess it.",
         "PERMISSION: confirm Lemonwood Grove School is happy to be named publicly before launch."
       ]
     },

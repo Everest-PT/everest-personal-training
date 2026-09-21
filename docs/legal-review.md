@@ -10,14 +10,21 @@ that needs confirming, so that review is a checklist rather than a hunt.
 
 These were checked, not assumed:
 
-- The site sets **no cookies**, runs no analytics, no advertising tags, no
-  tracking pixels, no session recording, and uses no `localStorage`.
+- The site sets **no cookies**, and carries no advertising tags, no tracking
+  pixels and no session recording. Analytics is Vercel Web Analytics, which is
+  cookieless and served from our own domain.
+- It uses no `localStorage`. It uses `sessionStorage` for one thing: which
+  tagged link brought the visit, erased when the tab closes, never read on a
+  later visit, and transmitted only if the visitor submits a form.
 - Since the fonts and icons were self-hosted, **no third-party request is made
   on any page**. Loading a page tells nobody but our own host.
 - The contact form collects name, email, enquiry type, organisation, message.
 - The EMPOWER form collects name, email, phone, location, role, organisation,
   interest and message — all adult contact details. No child data is collected
-  through the website.
+  through the website. **It became a working form on 22 September 2026**; until
+  then it collected those fields and submitted nowhere.
+- The programme finder's email step collects first name, email and the four
+  answers given to the finder.
 - Payments run through Trainerize, so card details never reach us.
 
 ## Needs Jared's confirmation
@@ -32,9 +39,10 @@ These were checked, not assumed:
 | 6 | **Refunds.** The draft relies on Consumer Guarantees Act rights and promises nothing beyond them. Decide whether there is also a goodwill or change-of-mind position. | Terms |
 | 7 | **Retention periods.** The draft says client records are kept "for a period afterwards". A specific period is stronger — commonly seven years to match tax records. | Privacy |
 | 8 | **Privacy officer.** The Privacy Act 2020 requires every agency to have one. The draft points people at Jared's email; naming the role explicitly is better. | Privacy |
-| 9 | ~~**Form provider.**~~ **Done, 22 September 2026.** Both forms are connected to Web3Forms, and the privacy policy names it under "Who else sees it" with a link to their privacy policy. Still worth the lawyer confirming the wording is sufficient disclosure. | Privacy |
+| 9 | ~~**Form provider.**~~ **Done, 22 September 2026.** All three forms are connected to Web3Forms, and the privacy policy names it under "Who else sees it" with a link to their privacy policy. Still worth the lawyer confirming the wording is sufficient disclosure. | Privacy |
 | 10 | **Overseas storage.** Trainerize and Vercel are overseas. Privacy Act principle 12 expects comparable safeguards where information leaves New Zealand. Worth the lawyer's attention. | Privacy |
 | 11 | **Safeguarding policy.** The privacy and consent sections reference youth safeguarding obligations. Confirm a written policy exists that they can point to. | Privacy, Consent |
+| 12 | **Attribution disclosure.** Enquiries now carry which tagged link brought the person and which page they landed on, held in session storage until they submit. The privacy policy describes this under both "What we collect" and "Cookies and analytics". Confirm the wording is sufficient, and that the claim "no consent banner because there is nothing to consent to" still holds with session storage in use. The view taken here: it is first-party, session-only, not read on a later visit, and sent only on a deliberate act by the visitor. | Privacy, Cookies |
 
 ## Related claims elsewhere on the site
 

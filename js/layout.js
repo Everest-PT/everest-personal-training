@@ -3,6 +3,68 @@
 (function () {
   'use strict';
 
+  /* ---- Attribution ----------------------------------------------------
+     Which link brought this visit. It lives here rather than in its own file
+     because layout.js is the one script every page loads, including blog
+     posts, and attribution has to be captured wherever someone lands, not
+     only on the pages that hold a form.
+
+     Kept in sessionStorage: it dies when the tab closes, it never follows
+     anyone between visits, and it is sent nowhere unless the visitor chooses
+     to submit a form. That keeps the privacy page's "no cookies, no profile"
+     claim true while still answering the only question worth asking - which
+     post, email or poster produced this enquiry.
+
+     Only the referring host is kept, not the full referring URL, so a search
+     tells us "google" rather than what somebody typed to find us. */
+  var ATTR_KEY = 'everest:attr';
+
+  function referringHost() {
+    if (!document.referrer) return '';
+    try {
+      var h = new URL(document.referrer).hostname;
+      return h === location.hostname ? '' : h.replace(/^www\./, '');
+    } catch (e) { return ''; }
+  }
+
+  function captureAttribution() {
+    var stored = null;
+    try { stored = JSON.parse(sessionStorage.getItem(ATTR_KEY) || 'null'); } catch (e) { stored = null; }
+    /* First page of the session wins. A visitor who arrives from Instagram,
+       reads three articles and then enquires came from Instagram, not from
+       the article they happened to be on. */
+    if (stored) return stored;
+
+    var p = new URLSearchParams(location.search);
+    var rec = {
+      source: p.get('utm_source') || '',
+      medium: p.get('utm_medium') || '',
+      campaign: p.get('utm_campaign') || '',
+      content: p.get('utm_content') || '',
+      landing: location.pathname,
+      referrer: referringHost(),
+      at: new Date().toISOString()
+    };
+    try { sessionStorage.setItem(ATTR_KEY, JSON.stringify(rec)); } catch (e) { /* private mode */ }
+    return rec;
+  }
+
+  var attribution = captureAttribution();
+
+  window.EverestAttribution = {
+    get: function () { return attribution; },
+    /* One readable line for the enquiry email. */
+    summary: function () {
+      var a = attribution;
+      if (a.source) {
+        var bits = [a.source, a.medium, a.campaign].filter(Boolean).join(' / ');
+        return a.content ? bits + ' (' + a.content + ')' : bits;
+      }
+      if (a.referrer) return 'Referred by ' + a.referrer;
+      return 'Direct or untagged';
+    }
+  };
+
   /* Everest Group is the parent brand and the nav is its four business units,
      in that order, with everything about the company itself collapsed behind
      a fifth item. Seven flat top-level links had stopped reading as a

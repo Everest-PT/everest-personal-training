@@ -30,11 +30,14 @@ Set it to the production domain **with no trailing slash**, e.g.
 `https://www.everest-pt.com`. Set it on **Production only**, not Preview, or
 preview deployments become indexable duplicates.
 
-Three things move together on launch day, so do them in one sitting:
+Four things move together on launch day, so do them in one sitting:
 
 1. Set `SITE_URL` on Vercel Production.
 2. Attach the domain in Vercel.
-3. **Update the website URL on the Web3Forms form** (dashboard → the form →
+3. **Rebuild any tagged links** already in use - the Instagram bio, the email
+   signature, any printed poster. They carry the old address and keep working
+   only as long as it redirects. `lead-routing.md` holds the list.
+4. **Update the website URL on the Web3Forms form** (dashboard → the form →
    website URL), which currently reads
    `https://everest-personal-training-sooty.vercel.app`. The access key works
    from any origin, so forms keep working either way, but leaving a stale URL
@@ -109,15 +112,26 @@ explains every field. Outstanding before launch:
 - **EMPOWER sign-up poster** from Rebecca at Busy Bumbles. The partnership badge
   is standing in (`imageSrc`). Swap it when the poster arrives, under a new
   filename.
-- **EMPOWER sign-up URL.** The card's button points at `/empower/#register`,
-  whose form is not connected to anything yet. Replace `ctaHref` with the real
-  link. Do not guess it.
+- **EMPOWER sign-up URL.** The card's button points at `/empower/#register`.
+  That form now works and delivers to the inbox, so the card is no longer a
+  dead end. If a separate sign-up link exists once the poster arrives, replace
+  `ctaHref` with it. Do not guess it.
 - **Permission from Lemonwood Grove School** to be named on the homepage.
 - **Built For The Climb event names** as they should appear publicly, and an
   `endDate` once the preparation block has one.
 - **The data file is public** at `/data/whats-happening.json`. Only confirmed
   initiatives, and partners who have agreed to be named, go in it. Unconfirmed
   programs stay out until they are agreed.
+
+## Lead routing and link tagging
+
+Set up once, in the inbox rather than in the code: **filters on the subject
+tags**, so an organisation enquiry does not arrive looking like an app-programme
+enquiry. `lead-routing.md` has the filter list, the segment map and the link
+tagging conventions, with ready-made tagged links for each channel.
+
+All three forms - contact, programme finder and EMPOWER register - now deliver,
+carry a segment tag, and record which link brought the person.
 
 ## Analytics and the weekly audit
 
