@@ -32,7 +32,7 @@ These were checked, not assumed:
 | 6 | **Refunds.** The draft relies on Consumer Guarantees Act rights and promises nothing beyond them. Decide whether there is also a goodwill or change-of-mind position. | Terms |
 | 7 | **Retention periods.** The draft says client records are kept "for a period afterwards". A specific period is stronger — commonly seven years to match tax records. | Privacy |
 | 8 | **Privacy officer.** The Privacy Act 2020 requires every agency to have one. The draft points people at Jared's email; naming the role explicitly is better. | Privacy |
-| 9 | **Form provider.** Once the contact form is connected to Web3Forms, Formspree or similar, the privacy policy should name it, because that provider processes the message. | Privacy |
+| 9 | ~~**Form provider.**~~ **Done, 22 September 2026.** Both forms are connected to Web3Forms, and the privacy policy names it under "Who else sees it" with a link to their privacy policy. Still worth the lawyer confirming the wording is sufficient disclosure. | Privacy |
 | 10 | **Overseas storage.** Trainerize and Vercel are overseas. Privacy Act principle 12 expects comparable safeguards where information leaves New Zealand. Worth the lawyer's attention. | Privacy |
 | 11 | **Safeguarding policy.** The privacy and consent sections reference youth safeguarding obligations. Confirm a written policy exists that they can point to. | Privacy, Consent |
 

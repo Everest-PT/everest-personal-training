@@ -30,6 +30,17 @@ Set it to the production domain **with no trailing slash**, e.g.
 `https://www.everest-pt.com`. Set it on **Production only**, not Preview, or
 preview deployments become indexable duplicates.
 
+Three things move together on launch day, so do them in one sitting:
+
+1. Set `SITE_URL` on Vercel Production.
+2. Attach the domain in Vercel.
+3. **Update the website URL on the Web3Forms form** (dashboard → the form →
+   website URL), which currently reads
+   `https://everest-personal-training-sooty.vercel.app`. The access key works
+   from any origin, so forms keep working either way, but leaving a stale URL
+   there makes the dashboard misleading and forecloses turning on domain
+   restriction later.
+
 To sanity-check before flipping, run a production build locally:
 
 ```bash
@@ -63,7 +74,7 @@ another reason to set `SITE_URL` properly at launch.
 | 1 | **Decide the production domain** | Everything above depends on it. See `domain-migration.md` — the old domain holds five years of ranking history and the new one holds none. |
 | 2 | **Attach the domain in Vercel** | Until then the site only exists at the preview URL. |
 | 3 | **Set `SITE_URL`** | The launch switch. |
-| 4 | **Form endpoint** | Set it in **`js/form-config.js`**, which both the contact form and the programme finder's "email me my match" step read. Until then both fall back to opening the visitor's own mail app, which works but loses a meaningful share of people. Web3Forms needs no account, just a verified email. Whichever provider you pick, add it to the privacy policy under "Who else sees it". |
+| ~~4~~ | ~~**Form endpoint**~~ **Done, 22 September 2026.** Both forms post to Web3Forms, set once in `js/form-config.js`. Tested end to end: the contact form and the finder each returned `success: true` and delivered to jared@everest-pt.com. Web3Forms is named in the privacy policy. The website URL held on the Web3Forms form still points at the preview alias — see the launch-day list under **The one switch** above. |
 | 5 | **Written permission from Busy Bumbles, Moral Compass and Plus Fitness Rolleston** | They are named on `/organisations/`. Fine while noindexed; not fine once public without their say-so. |
 | 6 | **Legal review of `/legal/`** | The privacy policy, terms of purchase, health disclaimer, cookie statement and consent sections are now a real draft rather than placeholder text, written from what the site and business actually do. A lawyer should read it before the site is public. Every assumption it makes is listed in `legal-review.md`, along with eleven points needing Jared's confirmation — legal entity and NZBN, GST treatment, cancellation and refund terms, and retention periods among them. |
 
