@@ -1,5 +1,9 @@
 # Swapping Trainerize for the Everest portal
 
+**A shareable version of this is published for the portal team at**
+<https://claude.ai/code/artifact/773c94d8-5d8f-4900-85dd-1b624a7bcd93>.
+Keep the two in step.
+
 Written 22 September 2026, when Jared said a client portal is being built to
 replace Trainerize and the website should sell the programme and hand the new
 client straight to it.

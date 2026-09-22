@@ -43,14 +43,29 @@ This is the single biggest hole in the funnel, and it is not a website problem.
 Speed of first response is the most reliable predictor of whether a lead ever
 converts, and the drop between minutes and hours is steep.
 
-**Fix:** an automatic reply the instant the form is submitted, segment-aware:
-what happens next, when, one piece of proof, and the link to book a time. It
-should read like Jared wrote it in a hurry, not like a receipt.
+**Decided 22 September 2026: no autoresponder.** A templated reply is worse
+than a personal one, and Jared would rather have an AI assistant read the
+inbox on a schedule and reply in his voice. That is a better answer on quality
+and it comes with one condition worth writing down:
 
-**Cost:** Web3Forms Pro, US$12/month or $149/year, which is the plan that
-includes autoresponders. Nothing else on the site needs to change — the
-segment is already in the payload. Everything else on this list is free or
-already built.
+**The assistant drafts. A person sends.**
+
+An AI replying unsupervised to sales enquiries can invent a price, offer a time
+that is not free, or make a claim about training outcomes. Under the Fair
+Trading Act what a sales email says is a representation by the business, and
+the buyers who matter most here — councils, ACC, schools — are the least
+forgiving of a reply that turns out to be wrong. A draft sitting ready to send
+keeps every bit of the personalisation and none of that exposure: the send is
+one tap, and a person has read it.
+
+What the drafting needs, all of which already arrives in the enquiry email:
+the segment, the first move for that segment, what they actually wrote, and the
+channel that brought them.
+
+**The trade-off, stated plainly:** this does not close the five-minute window.
+Nothing reaches the enquirer until Jared taps send. For this business that is
+probably the right trade — a considered reply at 8am beats a robotic one at
+midnight when the thing being sold is coaching — but it is a choice, not a fix.
 
 ### 2. "Book a call" is not a booking
 
@@ -206,7 +221,7 @@ survives contact with a government buyer.
 
 | | What | Blocked on | Effort |
 |---|---|---|---|
-| 1 | Autoresponder, segment-aware | US$12/mo | Half a day once paid |
+| 1 | AI-drafted replies, sent by a person | A decision on where it runs | Half a day |
 | 2 | Real booking link everywhere | A scheduling link from Jared | Two hours |
 | 3 | Four missing checkout links | Trainerize plan links | Ten minutes |
 | ~~4~~ | ~~Proof beside the price~~ **Done** | — | — |
