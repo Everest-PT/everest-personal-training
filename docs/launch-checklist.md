@@ -83,7 +83,7 @@ another reason to set `SITE_URL` properly at launch.
 
 ## Should do before launch, not blocking
 
-- **Remaining 4 checkout links** — Starter Strength, Build/Hypertrophy, Run Strong, Strength & Stretch. Empty `checkoutUrl` in `data/programs.json` means those cards have no way to buy.
+- **Remaining 4 checkout links** — Starter Strength, Build/Hypertrophy, Run Strong, Strength & Stretch. Empty `checkoutUrl` in `data/programs.json` means those cards have no way to buy. **Hold until the new portal is ready** — see `portal-migration.md` — unless launch comes first, in which case point them at Trainerize rather than leaving a price with no way to pay.
 - **Social profile URLs** — feed them into `sameAs` in the JSON-LD (`tools/generate.js`, `businessGraph()`). This is how Google ties the site to the profiles.
 - **Balmanno and The Steam Tent store URLs** — still `TODO` in `about/index.html`.
 - **HIIT For Hope figures** from the MBIE post-event report.

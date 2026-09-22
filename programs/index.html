@@ -142,12 +142,23 @@
                 <h3 id="finder-result-name"></h3>
                 <p id="finder-result-desc"></p>
                 <ul class="result-why" id="finder-result-why"></ul>
+                <!-- The number, right next to the recommendation. The finder
+                     used to name a programme and make people click through to
+                     find out what it cost, which is the one question everyone
+                     has. -->
+                <div class="result-price" id="finder-result-price"></div>
                 <div class="result-actions">
                   <a class="btn btn-deep" id="finder-result-cta" href="#catalogue">See the programme</a>
                   <button class="finder-restart" id="finder-restart" type="button">Start over</button>
                 </div>
               </div>
             </div>
+
+            <!-- Proof where the doubt is. A real Google review that genuinely
+                 speaks to what they just told the finder, shown only against
+                 personal training programmes, because that is what these
+                 people actually bought. See data/testimonials.json. -->
+            <figure class="result-proof" id="finder-result-proof" hidden></figure>
 
             <!-- The ask comes after the answer, never before it. The result is
                  already on screen and the price is already public, so this is

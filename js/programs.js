@@ -192,6 +192,8 @@
     if (back) back.hidden = fcurr === 0;
   }
 
+  var LEVELS = ['beginner', 'intermediate', 'experienced'];
+
   function score(p) {
     var s = 0;
     if (answers.goal && p.goal === answers.goal) s += 3;
@@ -201,11 +203,84 @@
     return s;
   }
 
+  /* How far a programme's level sits from the one they told us, so ties break
+     toward the nearer level instead of toward whichever happens to be first in
+     data/programs.json. Without this an experienced lifter asking for strength
+     was recommended Starter Strength - three programmes tie on score, and file
+     order decided it. Nothing in the catalogue is tagged "experienced" for an
+     adult, so the nearest is the best that can be done here; tagging a
+     programme for experienced lifters is a separate, deliberate decision. */
+  function levelGap(p) {
+    var want = LEVELS.indexOf(answers.level || '');
+    var has = LEVELS.indexOf(p.level || '');
+    if (want < 0 || has < 0) return 0;
+    return Math.abs(want - has);
+  }
+
+  /* The same rule the catalogue cards use: a programme with a billing period
+     has a real price, one without is quoted. */
+  function priceHTML(p) {
+    if (!p.price) return '';
+    return p.billing
+      ? '<span class="rp-amount">' + esc(p.price) + '</span><span class="rp-term">' + esc(p.billing) + '</span>'
+      : '<span class="rp-amount rp-tbd">' + esc(p.price) + '</span>';
+  }
+
+  /* Pick the review that honestly speaks to what they just told us. A review
+     tagged "any" is one that says so in its own words, and it only wins when
+     nothing more specific does. Returns null rather than reaching for
+     something that does not fit - no proof beats proof that does not match. */
+  function pickReview(best) {
+    if (!PROOF || !PROOF.reviews || best.category !== 'personal-training') return null;
+    var chosen = null, top = 0;
+    PROOF.reviews.forEach(function (r) {
+      var m = r.matches; if (!m || !r.quote) return;
+      var s = 0;
+      function hit(list, answer, weight) {
+        if (!list || !answer) return;
+        if (list.indexOf(answer) !== -1) s += weight;
+        else if (list.indexOf('any') !== -1) s += 0.5;
+      }
+      hit(m.goal, answers.goal, 3);
+      hit(m.level, answers.level, 2);
+      hit(m.support, answers.support, 2);
+      if (s > top) { top = s; chosen = r; }
+    });
+    return top > 0 ? chosen : null;
+  }
+
+  function renderProof(best) {
+    var box = document.getElementById('finder-result-proof');
+    if (!box) return;
+    var r = pickReview(best);
+    if (!r) { box.hidden = true; box.innerHTML = ''; return; }
+
+    var g = (PROOF && PROOF.google) || {};
+    var stars = Math.max(0, Math.min(5, parseInt(r.rating, 10) || 5));
+    var rating = (g.display && g.rating && g.profileUrl)
+      ? '<a class="rp-rating" href="' + esc(g.profileUrl) + '" target="_blank" rel="noopener">' +
+          esc(g.rating) + ' from ' + esc(String(g.reviewCount)) + ' Google reviews</a>'
+      : '';
+
+    box.innerHTML =
+      '<span class="rp-stars" aria-label="' + stars + ' out of 5">' +
+        new Array(stars + 1).join('\u2605') + '</span>' +
+      '<blockquote>' + esc(r.quote) + '</blockquote>' +
+      '<figcaption>' + esc(r.name || 'Verified review') +
+        (r.source && !rating ? ' <span>\u00b7 ' + esc(r.source) + '</span>' : '') +
+        rating +
+      '</figcaption>';
+    box.hidden = false;
+  }
+
   function finishFinder() {
-    var best = null, bestScore = -1;
+    var best = null, bestScore = -1, bestGap = 99;
     activePrograms().forEach(function (p) {
       var sc = score(p);
-      if (sc > bestScore) { bestScore = sc; best = p; }
+      var gap = levelGap(p);
+      if (sc > bestScore || (sc === bestScore && gap < bestGap)) {
+        bestScore = sc; bestGap = gap; best = p;
+      }
     });
     if (!best) return;
 
@@ -228,6 +303,10 @@
         return '<li><i class="ti ti-check" aria-hidden="true"></i>' + esc(r) + '</li>';
       }).join('');
     }
+    var priceBox = document.getElementById('finder-result-price');
+    if (priceBox) priceBox.innerHTML = priceHTML(best);
+    renderProof(best);
+
     var cta = document.getElementById('finder-result-cta');
     var href = best.checkoutUrl || '/contact/';
     cta.setAttribute('href', href);
@@ -251,6 +330,7 @@
 
   var captured = null;
   var started = false;
+  var PROOF = null;
 
   function setupCapture(best, answers) {
     var form = document.getElementById('finder-capture');
@@ -388,6 +468,12 @@
       });
       wireFinder();
       wireCheckoutTracking();
+      /* Proof is optional: if this fails the finder still works, it just has
+         nothing to quote. */
+      fetch('/data/testimonials.json', { cache: 'no-cache' })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { PROOF = d; })
+        .catch(function () { PROOF = null; });
     })
     .catch(function (e) { console.error(e); });
 })();

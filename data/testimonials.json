@@ -1,6 +1,5 @@
 {
   "note": "REAL REVIEWS ONLY, copied verbatim from the Everest Personal Training Google Business Profile on 4 August 2026. Never write, paraphrase, embellish or invent an entry here. Inventing testimonials is misleading conduct under the Fair Trading Act and would undermine the credibility this site is building with councils, ACC and health-sector partners. Two obvious typing slips were corrected in Andrew Butler's review ('has has' to 'has', 'acheive' to 'achieve') — nothing else was altered and no meaning was changed. Revert if you would rather quote them exactly as written. The section stays hidden until display is true AND at least one review exists.",
-
   "google": {
     "display": true,
     "rating": "5.0",
@@ -8,25 +7,62 @@
     "profileUrl": "https://www.google.com/maps/search/Everest+Personal+Training+Rolleston",
     "sourceNote": "Verified 4 August 2026: 5.0 from 26 reviews. Re-check periodically — a published rating that no longer matches the live profile is a false claim. Update both here and the hero rating on index.html together."
   },
-
   "reviews": [
     {
       "name": "Amy Warwood",
       "rating": 5,
       "source": "Google",
-      "quote": "Started October last year with Jared after a few years away from the gym, and it's been a fantastic experience. He made me feel comfortable right away and tailored everything to my level. Supportive, knowledgeable, and motivating — highly recommend!"
+      "quote": "Started October last year with Jared after a few years away from the gym, and it's been a fantastic experience. He made me feel comfortable right away and tailored everything to my level. Supportive, knowledgeable, and motivating — highly recommend!",
+      "matches": {
+        "goal": [
+          "general health",
+          "confidence"
+        ],
+        "level": [
+          "beginner"
+        ],
+        "support": [
+          "coached",
+          "premium"
+        ]
+      }
     },
     {
       "name": "Andrew Butler",
       "rating": 5,
       "source": "Google",
-      "quote": "In my own experience Jared has broad knowledge and motivational skills that have been critical to striving forward in my health and fitness journey. I highly recommend Everest Personal Training no matter what stage you are at and what goals you may want to achieve."
+      "quote": "In my own experience Jared has broad knowledge and motivational skills that have been critical to striving forward in my health and fitness journey. I highly recommend Everest Personal Training no matter what stage you are at and what goals you may want to achieve.",
+      "matches": {
+        "goal": [
+          "any"
+        ],
+        "level": [
+          "any"
+        ],
+        "support": [
+          "any"
+        ]
+      }
     },
     {
       "name": "Kate V",
       "rating": 5,
       "source": "Google",
-      "quote": "I have recently started training with Jared at Plus Fitness. Jared is easy to work with, communicates well & strives to create a strong program that meets your individual needs."
+      "quote": "I have recently started training with Jared at Plus Fitness. Jared is easy to work with, communicates well & strives to create a strong program that meets your individual needs.",
+      "matches": {
+        "goal": [
+          "strength"
+        ],
+        "level": [
+          "intermediate",
+          "experienced"
+        ],
+        "support": [
+          "coached",
+          "premium"
+        ]
+      }
     }
-  ]
+  ],
+  "matching": "How a review is chosen to sit beside a price. Each review lists the goals, levels and support styles it HONESTLY speaks to, drawn from what the person actually wrote - nothing is stretched to fit. The quote itself is never edited to suit a programme. A review with \"any\" is one that explicitly says it applies whatever your goal or stage. Reviews are only shown against personal-training programmes, because that is what these people bought: attaching them to EMPOWER, Elite or an organisation's contract would be putting words in their mouths about something they never experienced."
 }

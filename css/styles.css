@@ -1324,6 +1324,29 @@ h1, h2, h3, .display { font-family: var(--display); letter-spacing: -0.01em; }
 .result-why li { display: flex; align-items: center; gap: 10px; font-family: var(--font); font-size: 14px; color: #2c2f31; }
 .result-why li i { color: var(--teal-deep); font-size: 18px; flex: 0 0 auto; }
 .result-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+
+/* The price, next to the recommendation rather than a click away. */
+.result-price { display: flex; align-items: baseline; gap: 8px; margin: 0 0 18px; }
+.rp-amount { font-family: var(--display); font-size: 30px; font-weight: 700; color: var(--black); line-height: 1; }
+.rp-amount.rp-tbd { font-size: 20px; color: var(--slate); }
+.rp-term { font-family: var(--font); font-size: 14px; color: var(--slate); }
+
+/* Proof directly under the price, because that is where the doubt is. Shown
+   only when a real review genuinely matches what the finder was told. */
+.result-proof { margin: 18px 0 0; padding: 18px 20px; background: #fff; color: var(--black);
+  border: 1px solid var(--mist-line); border-left: 3px solid var(--teal-accent); border-radius: 12px; }
+.result-proof[hidden] { display: none; }
+.rp-stars { color: var(--teal-deep); font-size: 14px; letter-spacing: 2px; }
+.result-proof blockquote { margin: 8px 0 10px; font-family: var(--font); font-size: 15px;
+  line-height: 1.65; color: #2c2f31; }
+.result-proof figcaption { font-family: var(--font); font-size: 13px; color: var(--slate);
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.result-proof figcaption span { color: var(--slate); }
+.rp-rating { margin-left: auto; color: var(--teal-deep); text-decoration: none; font-weight: 600; }
+.rp-rating:hover, .rp-rating:focus-visible { text-decoration: underline; }
+@media (max-width: 640px) {
+  .rp-rating { margin-left: 0; flex-basis: 100%; }
+}
 .finder-restart { background: none; border: 0; color: var(--slate); font-family: var(--font); font-size: 14px;
   cursor: pointer; text-decoration: underline; padding: 0; }
 .finder-restart:hover { color: var(--teal-deep); }

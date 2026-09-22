@@ -100,17 +100,27 @@ it — with 250 free submissions a month, it is not close yet.
 
 ### 5. Proof sits a long way from the decision
 
-Three real Google reviews and a 5.0 rating exist, and they live on the homepage
+~~Three real Google reviews and a 5.0 rating exist, and they live on the homepage
 and the contact page. The decision, though, is made on the programme card and in
-the finder result — where there is no proof at all.
+the finder result — where there is no proof at all.~~
 
-**Fix:** put one relevant review beside the price. The strength review next to
-the strength programmes, the return-to-training review next to the beginner
-ones. Same reviews, moved to where the doubt is.
+**Done, 22 September 2026.** The finder result now shows the price, which it
+never did — it named a programme and made people click through for the one
+number everybody wants — and under it, a real Google review chosen to match what
+they just said.
 
-This is free and it is the highest-value change I can make without needing
-anything from Jared. It is also the one most likely to be undone by good
-intentions later, so: **real reviews only, verbatim, from the Google profile.**
+The matching is in `data/testimonials.json`: each review lists the goals, levels
+and support styles it honestly speaks to, taken from what the person actually
+wrote. Amy's review mentions coming back after years away, so it shows to
+beginners. Kate's mentions programming for individual needs, so it shows on
+strength. Andrew's says in its own words that it applies whatever your goal or
+stage, so it is the fallback. **No quote was edited**, and when nothing genuinely
+fits, nothing is shown — no proof beats proof that does not match.
+
+Reviews appear only against personal-training programmes, because that is what
+these three people bought. Putting them against EMPOWER, Elite or an
+organisation's contract would be putting words in their mouths about something
+they never experienced.
 
 ### 6. There is no first step that costs nothing
 
@@ -134,6 +144,22 @@ happy clients can, and only when asked at the right moment.
 can feel — a first unassisted pull-up, a scan that moved, a race finished — send
 the direct review link that day. Never bulk, never incentivised, never written
 for them. Same for referrals: ask once, specifically, after a win.
+
+### The finder was recommending the wrong programme
+
+Found while testing the proof block, fixed 22 September 2026.
+
+Ask for **strength**, say you are **experienced**, and the finder recommended
+**Starter Strength**. Three programmes tied on score and the winner was whichever
+came first in `data/programs.json`. Ties now break toward the nearer level, so
+the same answers return Build / Hypertrophy.
+
+The underlying gap is in the data and needs a decision: **no adult programme is
+tagged `experienced`**. The only one in the catalogue is Everest Athlete, which is
+for athletes. So an experienced adult can never get a true level match — the
+finder returns the nearest thing and calls it a best fit. Either an existing
+programme should carry that tag or the catalogue is genuinely missing a tier,
+and that is a business call rather than a code one.
 
 ## What is now measurable
 
@@ -183,10 +209,18 @@ survives contact with a government buyer.
 | 1 | Autoresponder, segment-aware | US$12/mo | Half a day once paid |
 | 2 | Real booking link everywhere | A scheduling link from Jared | Two hours |
 | 3 | Four missing checkout links | Trainerize plan links | Ten minutes |
-| 4 | Proof beside the price | Nothing | Half a day |
+| ~~4~~ | ~~Proof beside the price~~ **Done** | — | — |
 | 5 | Switch on Vercel Analytics | One click in the dashboard | Minutes |
 | 6 | Three-touch follow-up | A decision about tooling | Ongoing |
 | 7 | Review and referral routine | A habit, not a build | Ongoing |
 
-Items 4 and 5 can happen today. Items 1, 2 and 3 are worth more and are all
-waiting on something only Jared can supply.
+Item 4 is done. Item 5 is one click in the Vercel dashboard. Items 1, 2 and 3
+are worth more than everything else here and are all waiting on something only
+Jared can supply.
+
+One change of direction, noted 22 September 2026: **Trainerize is being replaced
+by a portal Everest is building.** That makes item 3 partly moot — there is
+little point adding four Trainerize checkout links that will be replaced — and it
+raises a bigger opportunity, which is that the portal can accept the campaign
+parameters and close the loop from a post to a paying client. See
+`portal-migration.md`.
