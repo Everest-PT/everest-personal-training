@@ -18,7 +18,7 @@ Neither costs the visitor anything, and neither is visible to them.
 |---|---|---|
 | `subject` | `[ORG] Website enquiry from Jane Smith - Selwyn District Council` | The tag is the segment, the rest is the person |
 | `segment` | `Organisations` | What kind of enquiry this is |
-| `target_reply` | `One business day` | Internal target only. It is **not** promised anywhere on the site |
+| `target_reply` | `One business day` | The internal target. `/contact/` promises one working day publicly, so nothing here is slower |
 | `first_move` | `Ask what they measure today, who signs it off…` | The opening that usually works for that segment |
 | `form` | `Contact page` | Which of the three forms it came from |
 | `came_from` | `instagram / social / spring-launch (bio-link)` | The tagged link, or `Referred by google.com`, or `Direct or untagged` |

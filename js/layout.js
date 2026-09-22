@@ -65,6 +65,36 @@
     }
   };
 
+  /* ---- Funnel events ---------------------------------------------------
+     A funnel you cannot see is a funnel you cannot fix. These mark the
+     steps between landing and buying, so the drop-off shows up as a number
+     rather than a feeling: how many start the finder, how many finish it,
+     how many hand over an email, how many click through to pay.
+
+     Every event carries the channel that brought the visit, so the same
+     funnel can be read per channel - Instagram traffic that never reaches a
+     result is a different problem from Instagram traffic that reaches one
+     and stops.
+
+     Never send anything about a person: no name, no email, no message. A
+     programme slug and a segment are about the offer, not the visitor, and
+     that is the line the privacy page draws. */
+  window.EverestTrack = function (name, data) {
+    if (typeof window.va !== 'function') return;   /* analytics not enabled */
+    var payload = data || {};
+    payload.source = attribution.source || (attribution.referrer ? 'referral' : 'direct');
+    try { window.va('event', { name: name, data: payload }); } catch (e) {}
+  };
+
+  /* Clicks worth counting that are the same on every page. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('tel:') === 0) window.EverestTrack('phone_click');
+    else if (a.closest('.sticky-cta')) window.EverestTrack('sticky_cta_click');
+  });
+
   /* Everest Group is the parent brand and the nav is its four business units,
      in that order, with everything about the company itself collapsed behind
      a fifth item. Seven flat top-level links had stopped reading as a

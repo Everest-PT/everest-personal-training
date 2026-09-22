@@ -105,6 +105,8 @@
       payload.subject = '[EMPOWER] ' + headline;
     }
 
+    if (window.EverestTrack) window.EverestTrack('empower_submitted', { interest: interest.value });
+
     if (CFG.endpoint) {
       done('Sending...');
       fetch(CFG.endpoint, {

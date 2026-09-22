@@ -152,6 +152,9 @@
       var key = step.getAttribute('data-key');
       step.querySelectorAll('.fopt').forEach(function (btn) {
         btn.addEventListener('click', function () {
+          /* Only the first answer of a run, so this counts people who started
+             the finder rather than clicks on options. */
+          if (!started) { started = true; track('finder_start'); }
           step.querySelectorAll('.fopt').forEach(function (b) { b.classList.remove('selected'); });
           btn.classList.add('selected');
           answers[key] = btn.getAttribute('data-value');
@@ -241,13 +244,13 @@
 
   /* Vercel Web Analytics custom events. Programme slug only: never a name, an
      email or anything else that could identify the person who filled it in. */
+  /* Defined in js/layout.js, which every page loads. */
   function track(name, data) {
-    if (typeof window.va === 'function') {
-      try { window.va('event', { name: name, data: data || {} }); } catch (e) {}
-    }
+    if (window.EverestTrack) window.EverestTrack(name, data);
   }
 
   var captured = null;
+  var started = false;
 
   function setupCapture(best, answers) {
     var form = document.getElementById('finder-capture');
@@ -338,12 +341,32 @@
 
   function resetFinder() {
     answers = {};
+    started = false;
     fsteps.forEach(function (s) {
       s.querySelectorAll('.fopt').forEach(function (b) { b.classList.remove('selected'); });
     });
     var box = document.getElementById('finder-result'); if (box) box.classList.remove('show');
     var stage = document.getElementById('finder-stage'); if (stage) stage.hidden = false;
     goToStep(0);
+  }
+
+  /* The step where money starts moving. "buy" is a real checkout, "enquire"
+     is a programme priced by proposal whose button opens a conversation
+     instead - two different things that should not be counted as one. */
+  function wireCheckoutTracking() {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('.product .pfoot a, #finder-result-cta');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      var card = a.closest('.product');
+      var name = card
+        ? (card.querySelector('h3') || {}).textContent
+        : (captured && captured.programme) || 'finder result';
+      track('checkout_click', {
+        programme: (name || '').trim(),
+        kind: /^https?:\/\//.test(href) ? 'buy' : 'enquire'
+      });
+    });
   }
 
   /* ---- init ---- */
@@ -364,6 +387,7 @@
         render();
       });
       wireFinder();
+      wireCheckoutTracking();
     })
     .catch(function (e) { console.error(e); });
 })();

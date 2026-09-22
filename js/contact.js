@@ -93,6 +93,8 @@
         payload.subject = 'Website enquiry (' + data.type + ') from ' + data.name;
       }
       if (ACCESS_KEY) payload.access_key = ACCESS_KEY;   /* Web3Forms */
+      /* The segment only. Never the name, email or message. */
+      if (window.EverestTrack) window.EverestTrack('enquiry_submitted', { segment: data.type });
       fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },

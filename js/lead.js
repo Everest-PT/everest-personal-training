@@ -17,7 +17,9 @@
 
   /* tag        what to filter on. Short, uppercase, stable.
      label      how the segment is named in the email.
-     reply      internal target, not a promise made anywhere on the site.
+     reply      the internal target. /contact/ publicly promises a reply
+                within one working day, so nothing here may be slower than
+                that - these are tighter where the segment deserves it.
      first      the opening move. Written as an action, not a reminder. */
   var SEGMENTS = {
     individual: {
