@@ -1,27 +1,32 @@
 # Migrating everestpersonaltraining.com
 
-> **Superseded, 24 September 2026.** The new home is
-> **`www.everest-group.co.nz`** (bought at GoDaddy, connected to Vercel the
-> same day). Jared cannot get access to the old domain's registrar or DNS, so
-> the redirect plan below **cannot be carried out** and the new domain starts
-> with no ranking history.
+> **Update, 24 September 2026 - the old domain IS recoverable, and there is a
+> deadline.** The new home is **`www.everest-group.co.nz`** (bought at GoDaddy,
+> connected to Vercel the same day). An earlier version of this note said the old
+> domain could not be recovered. That was wrong, and it was written before the
+> hosting notice was re-read.
 >
-> What that costs: the old site's five years of Google standing stays with a
-> domain Everest does not control. When the hosting terminates, those pages
-> disappear and their ranking goes with them. Nothing here can rescue it, but
-> two things limit the damage: keep the old site's content alive on the new one
-> (the site inventory below maps every old page to a new one), and get the new
-> Google Business Profile verified early, since reviews and local ranking live
-> there rather than on the domain.
+> **What the notice says.** The registrant and host is Byron Locke of Shrike
+> Marketing & Design, who is closing his hosting accounts. Ownership of
+> `everestpersonaltraining.com` can be transferred to Jared's own Xneelo account:
+> create an account at xneelo.co.za, then Tools > Transfers > New transfer request,
+> enter the domain and choose "Request ownership". Byron approves once outstanding
+> hosting fees are settled. No files move and the site and email stay up.
 >
-> If access to `everestpersonaltraining.com` is ever recovered — through the
-> registrar, or through Byron — the redirects below become possible again and are
-> worth doing then, with a Change of Address in Search Console.
-
-> **Status: not configured.** The redirect rules described below were added to
-> `vercel.json` and then removed at Jared's request. Nothing in this document
-> is live. It is kept as reference for whenever the migration does happen, and
-> because the findings at the bottom are true either way.
+> **Deadline: the domain renews on 6 October 2026** and the notice requires the
+> transfer before then. The stated 15 July server shutdown has passed with the old
+> site still answering, which should not be relied on. Anything in the
+> `jared@everestpersonaltraining.com` mailbox is permanently removed at shutdown.
+>
+> **What recovery buys.** Control of the old domain lets the redirect plan below be
+> carried out, so its five years of Google standing move to the new site, with a
+> Change of Address filed in Search Console. Without it the old pages disappear at
+> shutdown and the new domain starts with no history.
+>
+> **Order of work:** Jared creates the Xneelo account and submits the request;
+> Byron sends the balance and is paid; Byron approves; DNS for the old domain is
+> then set to redirect every old URL to `www.everest-group.co.nz`, using the table
+> below. Nothing in this repository needs to change for the transfer itself.
 
 The old WordPress site is the only real ranking history Everest has. Switching
 it off without redirects throws that away and the new pages start from zero.
