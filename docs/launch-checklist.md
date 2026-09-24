@@ -70,11 +70,24 @@ host's project and is no longer updated. It is still the fallback `SITE_URL` in
 `tools/generate.js`, which is harmless while the site is noindexed but is
 another reason to set `SITE_URL` properly at launch.
 
+## What is and is not published
+
+`outputDirectory` is `.`, so everything in the repository used to be served: this
+folder, the tools, the blog sources and the workflows were all readable at their
+URLs, including a list of which organisations had not yet given permission.
+Corrected 24 September 2026: the build command now deletes `docs`, `tools`,
+`templates`, `content`, `.github`, `.claude`, `.pydeps`, `README.md` and
+`requirements.txt` once it has finished with them, so none of it is deployed.
+
+Still public on purpose: `data/`, `js/`, `css/` and `assets/`. **Never put a draft,
+a private name or a credential in any of those.** If a new top-level folder is added
+for internal use, add it to the `rm -rf` list in `vercel.json`, or it will be served.
+
 ## Blocking launch
 
 | # | Item | Why it blocks |
 |---|---|---|
-| ~~1~~ | ~~**Decide the production domain**~~ **Done, 24 September 2026.** `everest-group.co.nz`, bought at GoDaddy, with **`www.everest-group.co.nz` as the canonical address** — the bare domain redirects to it. The old `everestpersonaltraining.com` can be recovered from Byron Locke by an Xneelo ownership transfer, **but only before its 6 October 2026 renewal** (see `domain-migration.md`). Until then the new domain has no ranking history. | Decided |
+| ~~1~~ | ~~**Decide the production domain**~~ **Done, 24 September 2026.** `everest-group.co.nz`, bought at GoDaddy, with **`www.everest-group.co.nz` as the canonical address** — the bare domain redirects to it. The old `everestpersonaltraining.com` can be recovered from Byron Locke by a domain transfer. The registry shows it renewed to **6 October 2027**, so nothing lapses, but it is locked until Byron unlocks it (see `domain-migration.md`). Until then the new domain has no ranking history. | Decided |
 | ~~2~~ | ~~**Attach the domain in Vercel**~~ **Done, 24 September 2026.** DNS stays at GoDaddy: `A @ 76.76.21.21` and `CNAME www cname.vercel-dns.com`. Vercel has issued HTTPS certificates for both names and serves the site on `www`. Public DNS took up to an hour to catch up. Do not move the nameservers to Vercel without first recreating any email records added to this domain. | Done |
 | 3 | **Set `SITE_URL`** to `https://www.everest-group.co.nz` (no trailing slash, Production only) | The launch switch. Must match the canonical `www` address exactly. |
 | ~~4~~ | ~~**Form endpoint**~~ **Done, 22 September 2026.** Both forms post to Web3Forms, set once in `js/form-config.js`. Tested end to end: the contact form and the finder each returned `success: true` and delivered to jared@everest-pt.com. Web3Forms is named in the privacy policy. The website URL held on the Web3Forms form still points at the preview alias — see the launch-day list under **The one switch** above. |

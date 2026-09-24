@@ -1,32 +1,50 @@
 # Migrating everestpersonaltraining.com
 
-> **Update, 24 September 2026 - the old domain IS recoverable, and there is a
-> deadline.** The new home is **`www.everest-group.co.nz`** (bought at GoDaddy,
+> **Update, 24 September 2026 - the old domain is recoverable, and it is not about
+> to lapse.** The new home is **`www.everest-group.co.nz`** (bought at GoDaddy,
 > connected to Vercel the same day). An earlier version of this note said the old
-> domain could not be recovered. That was wrong, and it was written before the
-> hosting notice was re-read.
+> domain could not be recovered, and a later one gave a 6 October 2026 deadline.
+> Both were wrong.
 >
-> **What the notice says.** The registrant and host is Byron Locke of Shrike
-> Marketing & Design, who is closing his hosting accounts. Ownership of
-> `everestpersonaltraining.com` can be transferred to Jared's own Xneelo account:
-> create an account at xneelo.co.za, then Tools > Transfers > New transfer request,
-> enter the domain and choose "Request ownership". Byron approves once outstanding
-> hosting fees are settled. No files move and the site and email stay up.
+> **What the public registry says** (RDAP, checked 24 September 2026): registrar
+> Tucows Domains, registered 6 October 2021, **expires 6 October 2027**, last changed
+> 7 September 2026. It was renewed on 7 September, so the "6 October 2026" in the
+> hosting notice and the "2 September 2026" in Byron's later email both describe
+> the previous expiry. Its status is **"client transfer prohibited"**: it is locked,
+> and nothing can move until Byron unlocks it.
 >
-> **Deadline: the domain renews on 6 October 2026** and the notice requires the
-> transfer before then. The stated 15 July server shutdown has passed with the old
-> site still answering, which should not be relied on. Anything in the
-> `jared@everestpersonaltraining.com` mailbox is permanently removed at shutdown.
+> **Who holds it.** Byron Locke of Shrike Marketing & Design is the registrant and
+> host, and is closing his hosting accounts. His stated shutdown, 15 July 2026, has
+> passed with the old site still answering, which should not be relied on. Anything
+> in the `jared@everestpersonaltraining.com` mailbox is permanently removed at
+> shutdown, and it is served from Byron's hosting, so it stops when hosting does.
+>
+> **Two ways to take ownership:**
+>
+> 1. *An Xneelo account of Jared's own* (South Africa). Byron's route. He is not sure
+>    an account can be opened from New Zealand.
+> 2. *A standard external transfer* to a registrar Jared already uses, such as the
+>    GoDaddy account that holds `everest-group.co.nz`. Byron unlocks the domain and
+>    sends the authorisation (EPP) code, and Jared starts the transfer at GoDaddy.
+>    The gaining registrar adds a year to the term. Ask Byron whether the 7 September
+>    change started an ICANN 60-day transfer lock.
+>
+> **Recommended: option 2.** It needs no South African account, and the domain then
+> sits beside the new one. Hosting is not needed at all, since the site now lives on
+> Vercel; only the domain is.
 >
 > **What recovery buys.** Control of the old domain lets the redirect plan below be
-> carried out, so its five years of Google standing move to the new site, with a
-> Change of Address filed in Search Console. Without it the old pages disappear at
-> shutdown and the new domain starts with no history.
+> carried out, so five years of Google standing move to the new site, with a Change
+> of Address filed in Search Console. Without it the old pages disappear at shutdown.
 >
-> **Order of work:** Jared creates the Xneelo account and submits the request;
-> Byron sends the balance and is paid; Byron approves; DNS for the old domain is
-> then set to redirect every old URL to `www.everest-group.co.nz`, using the table
-> below. Nothing in this repository needs to change for the transfer itself.
+> **Backups Byron has offered:** the site's database as a SQL file, and the site files
+> as `public_html.zip` on his OneDrive. Both should be downloaded and kept. The zip
+> holds the full-size originals of the old site's photographs.
+>
+> **Order of work:** Byron unlocks and sends the code; the transfer is started at
+> GoDaddy; DNS for the old domain is pointed at Vercel; the old domain is added to
+> the Vercel project; host-conditional redirects (added to `vercel.json` at that
+> point, using the table below) send every old URL to `www.everest-group.co.nz`.
 
 The old WordPress site is the only real ranking history Everest has. Switching
 it off without redirects throws that away and the new pages start from zero.
