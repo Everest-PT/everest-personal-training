@@ -74,9 +74,9 @@ another reason to set `SITE_URL` properly at launch.
 
 | # | Item | Why it blocks |
 |---|---|---|
-| 1 | **Decide the production domain** | Everything above depends on it. See `domain-migration.md` — the old domain holds five years of ranking history and the new one holds none. |
-| 2 | **Attach the domain in Vercel** | Until then the site only exists at the preview URL. |
-| 3 | **Set `SITE_URL`** | The launch switch. |
+| ~~1~~ | ~~**Decide the production domain**~~ **Done, 24 September 2026.** `everest-group.co.nz`, bought at GoDaddy, with **`www.everest-group.co.nz` as the canonical address** — the bare domain redirects to it. The old `everestpersonaltraining.com` is out of reach (see `domain-migration.md`), so the new domain starts with no ranking history. | Decided |
+| ~~2~~ | ~~**Attach the domain in Vercel**~~ **Done, 24 September 2026.** DNS stays at GoDaddy: `A @ 76.76.21.21` and `CNAME www cname.vercel-dns.com`. Vercel has issued HTTPS certificates for both names and serves the site on `www`. Public DNS took up to an hour to catch up. Do not move the nameservers to Vercel without first recreating any email records added to this domain. | Done |
+| 3 | **Set `SITE_URL`** to `https://www.everest-group.co.nz` (no trailing slash, Production only) | The launch switch. Must match the canonical `www` address exactly. |
 | ~~4~~ | ~~**Form endpoint**~~ **Done, 22 September 2026.** Both forms post to Web3Forms, set once in `js/form-config.js`. Tested end to end: the contact form and the finder each returned `success: true` and delivered to jared@everest-pt.com. Web3Forms is named in the privacy policy. The website URL held on the Web3Forms form still points at the preview alias — see the launch-day list under **The one switch** above. |
 | 5 | **Written permission from Busy Bumbles, Moral Compass and Plus Fitness Rolleston** | They are named on `/organisations/`. Fine while noindexed; not fine once public without their say-so. |
 | 6 | **Legal review of `/legal/`** | The privacy policy, terms of purchase, health disclaimer, cookie statement and consent sections are now a real draft rather than placeholder text, written from what the site and business actually do. A lawyer should read it before the site is public. Every assumption it makes is listed in `legal-review.md`, along with eleven points needing Jared's confirmation — legal entity and NZBN, GST treatment, cancellation and refund terms, and retention periods among them. |

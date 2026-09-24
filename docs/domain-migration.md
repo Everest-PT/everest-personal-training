@@ -1,5 +1,23 @@
 # Migrating everestpersonaltraining.com
 
+> **Superseded, 24 September 2026.** The new home is
+> **`www.everest-group.co.nz`** (bought at GoDaddy, connected to Vercel the
+> same day). Jared cannot get access to the old domain's registrar or DNS, so
+> the redirect plan below **cannot be carried out** and the new domain starts
+> with no ranking history.
+>
+> What that costs: the old site's five years of Google standing stays with a
+> domain Everest does not control. When the hosting terminates, those pages
+> disappear and their ranking goes with them. Nothing here can rescue it, but
+> two things limit the damage: keep the old site's content alive on the new one
+> (the site inventory below maps every old page to a new one), and get the new
+> Google Business Profile verified early, since reviews and local ranking live
+> there rather than on the domain.
+>
+> If access to `everestpersonaltraining.com` is ever recovered — through the
+> registrar, or through Byron — the redirects below become possible again and are
+> worth doing then, with a Change of Address in Search Console.
+
 > **Status: not configured.** The redirect rules described below were added to
 > `vercel.json` and then removed at Jared's request. Nothing in this document
 > is live. It is kept as reference for whenever the migration does happen, and
