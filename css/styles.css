@@ -202,7 +202,10 @@ h1, h2, h3 { font-weight: 500; margin: 0; line-height: 1.12; }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .site-header { background: rgba(14,16,16,.95); }
 }
-.logo { display: flex; align-items: center; gap: 9px; font-weight: 500; letter-spacing: .5px; }
+/* The wordmark uses the same face and tracking as the menu beside it. It used to
+   fall through to the body font, so the two read as different typefaces. */
+.logo { display: flex; align-items: center; gap: 9px; font-family: var(--display);
+  font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
 .site-header .logo { color: #fff; }
 /* No backing plate — the logo sits directly on the dark glass, which is why
    the header had to go dark. Do not put this on a light surface without a
@@ -272,8 +275,8 @@ h1, h2, h3 { font-weight: 500; margin: 0; line-height: 1.12; }
 @media (max-width: 920px) {
   .nav-group { display: block; }
   .nav-trigger { display: none; }
-  .nav-group-label { display: block; padding: 14px 22px 6px; font-family: var(--font);
-    font-size: 12px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase;
+  .nav-group-label { display: block; padding: 14px 22px 6px; font-family: var(--display);
+    font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
     color: var(--teal-accent); }
   .nav-sub { position: static; transform: none; opacity: 1; visibility: visible;
     pointer-events: auto; min-width: 0; background: none; border: 0; padding: 0;
@@ -283,7 +286,8 @@ h1, h2, h3 { font-weight: 500; margin: 0; line-height: 1.12; }
 }
 .nav-cta { display: none; }
 .header-cta { display: flex; align-items: center; gap: 12px; }
-.header-call { padding: 10px 20px; font-size: 13.5px;
+.header-call { padding: 10px 20px; font-family: var(--display); font-size: 13px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
   box-shadow: 0 4px 16px rgba(20,164,184,.45); }
 .header-call:hover { box-shadow: 0 7px 20px rgba(20,164,184,.6); transform: translateY(-1px);
   background: var(--teal-deep); color: #fff; }
@@ -439,7 +443,9 @@ h1, h2, h3 { font-weight: 500; margin: 0; line-height: 1.12; }
   .site-header.nav-open .nav { display: flex; }
   .nav a { padding: 12px 22px; font-size: 15px; }
   .nav-cta { display: block; margin: 10px 22px 12px; padding: 13px 18px; text-align: center;
-    background: var(--teal-accent); color: var(--teal-darkest); font-weight: 500;
+    background: var(--teal-accent); color: var(--teal-darkest);
+    font-family: var(--display); font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em;
     border-radius: var(--radius-pill); }
   .header-call { display: none; }
   .nav-toggle { display: block; }
@@ -993,6 +999,12 @@ h1, h2, h3, .display { font-family: var(--display); letter-spacing: -0.01em; }
    via .has-glow so it can be dropped onto any dark section. The host needs
    position:relative and overflow:hidden, and its content needs a z-index
    above 0 so the glow stays behind. Purely decorative. */
+/* The glow is deliberately larger than its section (inset: -12%), so the host MUST
+   clip it. A host that did not - the shortened mission and vision band on the
+   homepage - let the glow spill 45px past each edge of a phone, and the whole page
+   could be dragged sideways. Setting these here makes clipping the default rather
+   than something each new section has to remember. */
+.has-glow { position: relative; overflow: hidden; }
 .has-glow::before { content: ''; position: absolute; inset: -12%; z-index: 0;
   pointer-events: none;
   background:
@@ -1315,7 +1327,7 @@ h1, h2, h3, .display { font-family: var(--display); letter-spacing: -0.01em; }
 .result-head i { font-size: 18px; }
 .result-card { display: grid; grid-template-columns: 260px 1fr; background: #fff; color: var(--black);
   border-radius: 20px; overflow: hidden; box-shadow: 0 34px 74px rgba(0,0,0,.45); }
-.result-media { background-image: url('/assets/img/everest365-app-training-v1.webp'); background-size: cover;
+.result-media { background-image: url('/assets/img/everest365-app-training-v2.jpg'); background-size: cover;
   background-position: center; min-height: 230px; }
 .result-body { padding: 30px; }
 .result-body h3 { font-family: var(--display); font-size: 26px; font-weight: 700; margin: 0 0 8px; }
@@ -2681,7 +2693,7 @@ html, body { overflow-x: clip; }
    One line of vision and one sentence of mission. The two-card version still
    lives on /about/, which is why the .mv-card rules above stay. */
 .mv-short { padding: clamp(56px, 9vh, 88px) 0; }
-.mv-short .wrap { max-width: 920px; }
+.mv-short .wrap { max-width: 920px; position: relative; z-index: 1; }
 .mv-short .eyebrow { margin-bottom: 18px; }
 .mv-short-line { font-family: var(--display); font-weight: 600; font-size: clamp(24px, 3.2vw, 38px);
   line-height: 1.22; letter-spacing: -.01em; color: #fff; margin: 0; }
@@ -2878,3 +2890,18 @@ html, body { overflow-x: clip; }
    say, so it never leaves a gap. */
 .form-status { margin-top: 14px; font-size: 14px; }
 .form-status:empty { display: none; }
+
+/* The ascent route on a phone.
+   Its canvas is 1400 units wide, so on a 390px phone it was being squashed to
+   0.28 of its size: a stroke drawn 2 units wide came out at about half a pixel
+   and 26% opacity, which is to say invisible, and the camp markers were squashed
+   into thin slivers. Below 700px js/layout.js now redraws the route in real
+   pixels (a viewBox that matches the screen), so these widths are the widths
+   you see. If the script does not run, these values still apply to the stretched
+   canvas and the line is no worse than it was. */
+@media (max-width: 700px) {
+  .ascent .trail { stroke-width: 3; opacity: .5; }
+  .ascent .trail-climb { stroke-width: 4; filter: drop-shadow(0 0 5px rgba(20,164,184,.75)); }
+  .ascent .node { filter: drop-shadow(0 0 4px rgba(20,164,184,.8)); }
+  .ascent .summit { filter: drop-shadow(0 0 7px rgba(20,164,184,.9)); }
+}

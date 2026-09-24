@@ -133,6 +133,38 @@ conventions, with a ready-made tagged link for each channel.
 All three forms - contact, programme finder and EMPOWER register - now deliver,
 carry a segment tag, and record which link brought the person.
 
+## Photography
+
+Updated 24 September 2026, after the old site's images and the Drive were searched.
+
+**On the site now:** real photographs of Jared on the Personal Training, Elite,
+Impact and About pages, with the clothing and backdrop adjusted toward the Everest
+palette (khaki tee and maroon cap and shorts taken to black, teal-tinted grade, and
+the white studio backdrop on the headshot replaced with a deep teal gradient). A
+real group photo on the Organisations panel. The EVEREST365 image is still AI, with
+the giant wall logo and "GET SOME" removed.
+
+- **Balmanno.** Jared is a Balmanno ambassador and confirmed he has permission to use
+  the ambassador photographs. The originals are not in Drive: the only
+  "Ambassador Hero Shots" folder holds a single screenshot, and the shared
+  "Ambassadors" folder's Headshots subfolder returned nothing. Current files are the
+  800-1000px versions from the old site, which are soft on high-density phones.
+  **Ask Balmanno for the full-resolution originals.**
+- **Group photo.** A real community session on a grass field, cropped to three adults
+  in everyday training clothes. The wide original shows children, who are cropped out,
+  but the three adults are identifiable. **Confirm they are happy to appear**, in line
+  with the consent wording on `/legal/`.
+- **Still AI:** the EVEREST365 image (a woman using the app). A real photo of a client
+  using the app would replace it, ideally with consent on file.
+- **Not used, deliberately:** a before-and-after body photograph from a WhatsApp
+  screenshot (a private person's body plus an implied health claim); the HIIT For Hope
+  stills, which are dominated by Snap Fitness, Guinness and Diamond Charitable Trust
+  signage and would read as those organisations being clients; and anything from
+  the family-photo folders in Drive.
+- **The removed image.** The old Organisations panel showed an AI-generated uniformed
+  responder. It is gone, and the file deleted. AI images should not depict a sector
+  Everest cannot claim to have worked with.
+
 ## Analytics and the weekly audit
 
 **Analytics needs one click from Jared.** The script is on every page, but it

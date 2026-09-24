@@ -359,23 +359,86 @@
     });
   });
 
-  /* Keep the hero kettlebell in true proportion.
+  /* Keep the ascent route in true proportion.
      The ascent SVG uses preserveAspectRatio="none" so the route always spans
-     the full hero, which stretches its contents unevenly (harmless for a dot,
-     very visible on a kettlebell). Counter-scale the climber horizontally so it
-     renders round on every viewport. */
+     the full hero. That stretches its contents unevenly: harmless for a dot,
+     very visible on a kettlebell, and on a phone it squashes the whole route to
+     about 0.28 of its width, so the line ends up half a pixel wide and the camp
+     markers become slivers.
+
+     On desktop the climber is counter-scaled horizontally, as before. Below
+     700px the route is instead redrawn in real screen pixels: the viewBox is set
+     to the SVG's actual size and every point is rescaled into it, so strokes,
+     markers and the kettlebell keep their true shape at any phone size. The
+     original geometry is kept on each element and restored on the way back up. */
+  var MOBILE = window.matchMedia ? window.matchMedia('(max-width: 700px)') : { matches: false };
+
+  function parseRoute(d) {
+    var nums = d.match(/-?\d+(?:\.\d+)?/g) || [];
+    var pts = [];
+    for (var n = 0; n + 1 < nums.length; n += 2) pts.push([+nums[n], +nums[n + 1]]);
+    return pts;
+  }
+  function routeToPath(pts, kx, ky) {
+    return 'M' + pts.map(function (p) { return (p[0] * kx).toFixed(1) + ',' + (p[1] * ky).toFixed(1); }).join(' L');
+  }
+
   function fitClimber() {
     var svgs = document.querySelectorAll('.ascent svg');
     for (var i = 0; i < svgs.length; i++) {
-      var box = svgs[i].getBoundingClientRect();
+      var svg = svgs[i];
+      var box = svg.getBoundingClientRect();
       if (!box.width || !box.height) continue;
-      var kx = box.width / 1400;
-      var ky = box.height / 800;
-      var g = svgs[i].querySelector('.climber-scale');
-      if (g) g.setAttribute('transform', 'scale(' + (ky / kx).toFixed(4) + ',1)');
+
+      var paths = svg.querySelectorAll('.trail, .trail-climb');
+      var dots = svg.querySelectorAll('.node, .summit');
+      var climber = svg.querySelector('.climber');
+      var g = svg.querySelector('.climber-scale');
+
+      /* remember the desktop geometry the first time through */
+      if (!svg.hasAttribute('data-vb')) {
+        svg.setAttribute('data-vb', svg.getAttribute('viewBox') || '0 0 1400 800');
+        for (var p = 0; p < paths.length; p++) paths[p].setAttribute('data-d', paths[p].getAttribute('d'));
+        for (var c = 0; c < dots.length; c++) {
+          dots[c].setAttribute('data-cx', dots[c].getAttribute('cx'));
+          dots[c].setAttribute('data-cy', dots[c].getAttribute('cy'));
+        }
+      }
+      var vb = svg.getAttribute('data-vb').split(/\s+/).map(Number);
+
+      if (MOBILE.matches) {
+        var W = Math.round(box.width), H = Math.round(box.height);
+        var kx = W / vb[2], ky = H / vb[3];
+        var first = paths.length ? paths[0].getAttribute('data-d') : null;
+        if (!first) continue;
+        var pts = parseRoute(first);
+        var d = routeToPath(pts, kx, ky);
+        svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        for (var q = 0; q < paths.length; q++) paths[q].setAttribute('d', d);
+        for (var e = 0; e < dots.length; e++) {
+          dots[e].setAttribute('cx', (+dots[e].getAttribute('data-cx') * kx).toFixed(1));
+          dots[e].setAttribute('cy', (+dots[e].getAttribute('data-cy') * ky).toFixed(1));
+        }
+        if (climber) climber.style.offsetPath = 'path("' + d + '")';
+        /* the viewBox now matches the screen, so no counter-scaling is needed;
+           the kettlebell is simply drawn a little larger for a small screen */
+        if (g) g.setAttribute('transform', 'scale(1.3)');
+      } else {
+        svg.setAttribute('viewBox', svg.getAttribute('data-vb'));
+        for (var r = 0; r < paths.length; r++) paths[r].setAttribute('d', paths[r].getAttribute('data-d'));
+        for (var s = 0; s < dots.length; s++) {
+          dots[s].setAttribute('cx', dots[s].getAttribute('data-cx'));
+          dots[s].setAttribute('cy', dots[s].getAttribute('data-cy'));
+        }
+        if (climber) climber.style.offsetPath = '';
+        var dkx = box.width / vb[2];
+        var dky = box.height / vb[3];
+        if (g) g.setAttribute('transform', 'scale(' + (dky / dkx).toFixed(4) + ',1)');
+      }
     }
   }
   fitClimber();
+  window.addEventListener('load', fitClimber);
   var fitTimer;
   window.addEventListener('resize', function () {
     clearTimeout(fitTimer);
